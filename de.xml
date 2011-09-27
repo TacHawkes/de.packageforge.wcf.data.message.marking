@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="de">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.markAsTeam"><![CDATA[Als Team markieren]]></item>
+		<item name="wcf.acp.group.markAsTeamCSS"><![CDATA[]]></item>
+		<item name="wcf.acp.group.markAsTeamCSS.description"><![CDATA[]]></item>
+	</category>
+</language>
