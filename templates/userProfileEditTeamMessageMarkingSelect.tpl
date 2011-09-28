@@ -1,6 +1,25 @@
+<script type="text/javascript">
+	//<![CDATA[
+		var markingGroupIDs = new Array();
+		{foreach from=$markings item=marking}
+		markingGroupIDs.push({$marking.groupID});
+		{/foreach}
+
+		function showTeamMarkingPreview(groupID) {
+			markingGroupIDs.each(function(id) {
+				if (id != groupID) {
+					$('teamMarkingPreview' + id).hide();
+				}
+				else {
+					$('teamMarkingPreview' + id).show();
+				}
+			});
+		}
+	//]]>
+</script>
 <ul class="formOptionsLong">
 	{foreach from=$markings item=marking}
-		<li><label><input type="radio" name="markTeamMessageGroupID" value="{@$marking.groupID}" {if $marking.groupID == $markTeamMessageGroupID}checked="checked" {/if}/> <span>{lang}{$marking.groupName}{/lang}</span></label></li>
+		<li><label><input onclick="showTeamMarkingPreview({@$marking.groupID})" type="radio" name="markTeamMessageGroupID" value="{@$marking.groupID}" {if $marking.groupID == $markTeamMessageGroupID}checked="checked" {/if}/> <span>{lang}{$marking.groupName}{/lang}</span></label></li>
 	{/foreach}
 </ul>
 
@@ -26,7 +45,8 @@
 {assign var="sidebar" value=$sidebarFactory->get('dummy', 0)}
 {assign var="author" value=$sidebar->getUser()}
 {assign var="messageID" value=0}				
-<div id="teamMarkingPreview4" class="message">
+{foreach from=$markings item=marking}
+<div id="teamMarkingPreview{@$marking.groupID}" class="message"{if $marking.groupID != $markTeamMessageGroupID} style="display: none;"{/if}>
 	<div class="messageInner {@$messageClass} container-{cycle name=postCycle}">										
 		{include file='messageSidebar'}
 					
@@ -51,11 +71,11 @@
 						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 					</div>
 				</div>
-																					
-				<div class="{@$messageFooterClass}">								
+																														
 				<hr />
 			</div>
 		</div>
 					
 	</div>
-</div>			
+</div>
+{/foreach}			
