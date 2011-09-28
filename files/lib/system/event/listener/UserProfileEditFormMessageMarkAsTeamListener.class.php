@@ -12,7 +12,7 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  * @subpackage  system.event.listener
  * @category    Community Framework
  */
-class UserProfileEditFormOnlineMarkingListener implements EventListener {
+class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 	/**
 	 * group id
 	 * 	 

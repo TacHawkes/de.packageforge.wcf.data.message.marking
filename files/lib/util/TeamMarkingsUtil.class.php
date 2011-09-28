@@ -38,8 +38,7 @@ class TeamMarkingsUtil {
 				// insert content
 				$newSelector .= ' { '.$content.' }';
 				// insert new lines
-				$newSelector .= "\n\n";
-				
+				$newSelector .= "\n\n";		
 				
 				// append css
 				$newCss .= $newSelector;
