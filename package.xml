@@ -29,6 +29,8 @@
 		
 		<!-- config -->
 		<eventlistener>eventlistener.xml</eventlistener>
+		<options>options.xml</options>
+		<groupoptions>groupoptions.xml</groupoptions>
 		
 		<!-- language -->
 		<languages languagecode="de">de.xml</languages>

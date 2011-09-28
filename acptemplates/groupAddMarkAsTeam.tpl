@@ -12,7 +12,7 @@
 		<label for="markAsTeamCSS">{lang}wcf.acp.group.markAsTeamCSS{/lang}</label>
 	</div>
 	<div class="formField">
-		<textarea id="markAsTeamCSS" name="markAsTeamCSS">{@$markAsTeamCSS}</textarea> />
+		<textarea id="markAsTeamCSS" name="markAsTeamCSS" rows="5">{@$markAsTeamCSS}</textarea>
 	</div>
 	<div class="formFieldDesc hidden" id="markAsTeamCSSHelpMessage">
 		{lang}wcf.acp.group.markAsTeamCSS.description{/lang}

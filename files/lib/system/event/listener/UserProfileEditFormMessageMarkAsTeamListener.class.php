@@ -1,6 +1,8 @@
 <?php
 // wcf imports
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
+require_once(WCF_DIR.'lib/data/message/sidebar/MessageSidebarFactory.class.php');
+require_once(WCF_DIR.'lib/data/user/teamMarkings/DummySidebarObject.class.php');
 
 /**
  * Adds the team marking select to the user profile edit form.
@@ -62,21 +64,35 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 					$fields = array();
 					
 					// get team message markings
-					if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
+					// TODO: remove debug!
+					// if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
 						$markings = array();
 						$sql = "SELECT		groupID, groupName, markAsTeamCss
 							FROM		wcf".WCF_N."_group
 							WHERE		groupID IN (".implode(',', WCF::getUser()->getGroupIDs()).")
+							AND		markAsTeam = 1
 							ORDER BY	groupID ASC";
 						$result = WCF::getDB()->sendQuery($sql);
-						while ($row = WCF::getDB()->fetchArray($result)) {							
+						while ($row = WCF::getDB()->fetchArray($result)) {
+							$row['parsedCSS'] = TeamMarkingsUtil::parseCSS($row['markAsTeamCss'], array('#teamMarkingPreview'.$row['groupID']));							
 							$markings[] = $row;
 						}
 						
 						if (count($markings)) {
+							$sidebarFactory = new MessageSidebarFactory($this);
+							$sidebarFactory->create(new DummySidebarObject());
+							$sidebarFactory->init();
+							
+							$additionalCSS = '';
+							foreach ($markings as $marking) {
+								$additionalCSS .= $marking['parsedCSS'];
+							}
+							WCF::getTPL()->append('specialStyles', '<style type="text/css">'.$additionalCSS.'</style>');
+							
 							WCF::getTPL()->assign(array(
 								'markings' => $markings,
-								'markTeamMessageGroupID' => $this->markTeamMessageGroupID
+								'markTeamMessageGroupID' => $this->markTeamMessageGroupID,
+								'sidebarFactory' => $sidebarFactory
 							));
 							$fields[] = array(
 								'optionName' => 'markTeamMessageGroupID',
@@ -86,7 +102,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 			                        		'html' => WCF::getTPL()->fetch('userProfileEditTeamMessageMarkingSelect')
 			                        	);
 						}
-					}
+					//}
 				
 					// add fields
 					if (count($fields) > 0) {
