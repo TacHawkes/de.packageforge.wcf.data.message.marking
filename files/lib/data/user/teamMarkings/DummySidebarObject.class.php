@@ -4,14 +4,14 @@ require_once(WCF_DIR.'lib/data/message/sidebar/MessageSidebarObject.class.php');
 require_once(WCF_DIR.'lib/data/user/UserProfile.class.php');
 
 /**
- * Represents a viewable post in the forum.
+ * Simple dummy object for the message preview
  *
- * @author 	Marcel Werk
- * @copyright	2001-2009 WoltLab GmbH
- * @license	WoltLab Burning Board License <http://www.woltlab.com/products/burning_board/license.php>
- * @package	com.woltlab.wbb
- * @subpackage	data.post
- * @category 	Burning Board
+ * @author      Oliver Kliebisch
+ * @copyright   2011 Oliver Kliebisch
+ * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @package     de.packageforge.wcf.markteam
+ * @subpackage  data.user.teamMarkings
+ * @category    Community Framework
  */
 class DummySidebarObject implements MessageSidebarObject {
 	/**
