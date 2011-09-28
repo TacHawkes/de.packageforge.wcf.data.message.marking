@@ -49,7 +49,7 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 						WHERE		groupID = ".$this->markTeamMessageGroupID."
 						AND 		groupID IN (".implode(',', $groupIDs).")";
 					$row = WCF::getDB()->getFirstRow($sql);
-					if (!isset($row['groupID'])) $this->markTeamMessageGroupID = Group::getGroupIdByType(Group::USERS);
+					if (!isset($row['groupID'])) $this->markTeamMessageGroupID = 0;
 				}
 				
 				// save group id
@@ -67,6 +67,7 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 				$sql = "SELECT		groupID, groupName, markAsTeamCss
 					FROM		wcf".WCF_N."_group
 					WHERE		groupID IN (".implode(',', $groupIDs).")
+					AND		markAsTeam = 1
 					ORDER BY	groupID ASC";
 				$result = WCF::getDB()->sendQuery($sql);
 				while ($row = WCF::getDB()->fetchArray($result)) {					

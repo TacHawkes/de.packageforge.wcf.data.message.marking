@@ -29,7 +29,8 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 		if (MODULE_USER_MARK_TEAM_MESSAGE == 1) {
 			if ($eventObj->activeCategory == 'profile') {
 				if ($eventName == 'validate') {
-					if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
+					// TODO: Remove debug
+					//if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
 						if (isset($_POST['markTeamMessageGroupID'])) $this->markTeamMessageGroupID = intval($_POST['markTeamMessageGroupID']);
 						
 						// validate mark team message group id
@@ -53,7 +54,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 							// save groupID
 							$eventObj->additionalFields['markTeamMessageGroupID'] = 0;
 						}
-					}
+					// }
 				}
 				else if ($eventName == 'assignVariables') {
 					if (!count($_POST)) {
