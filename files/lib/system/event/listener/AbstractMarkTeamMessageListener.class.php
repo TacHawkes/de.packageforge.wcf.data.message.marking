@@ -27,8 +27,6 @@ class AbstractMarkTeamMessageListener implements EventListener {
 	 * @var array<Group>
 	 */
 	protected $groups = array();
-	
-	// REGEX: ^[\t]*[a-zA-Z0-9\.# -_:@]+[\t]*\{(.*)}$
 
 	/**
 	 * @see EventListener::execute()
@@ -48,8 +46,7 @@ class AbstractMarkTeamMessageListener implements EventListener {
 						$messageToGroups[$message->markTeamMessageGroupID][] = $this->getObjectID($message);
 				}
 			}
-			
-			// TODO: rework this
+			 
 			// append the special styles
 			if (count($messageToGroups)) {
 				$additionalCSS = '';
@@ -58,16 +55,12 @@ class AbstractMarkTeamMessageListener implements EventListener {
 						$group = $this->groups[$groupID];
 						
 						// build selector
-						$css = '';
+						$targetSelectors = array();
 						foreach ($objectIDs as $objectID) {
-							if (!empty($cssSelector)) $cssSelector .= ', ';
-							$cssSelector .= $this->getMessageContainerSelector($objectID);
+							$targetSelectors[] = $this->getMessageContainerSelector($objectID);
 						}
 						
-						// append marking css
-						$css .= " {\n\t".$group->markAsTeamCSS."\n}\n";
-						
-						$additionalCSS .= $css;
+						$additionalCSS .= TeamMarkingsUtil::parseCSS($group->markAsTeamCSS, $targetSelectors);
 					}
 				}				
 				
