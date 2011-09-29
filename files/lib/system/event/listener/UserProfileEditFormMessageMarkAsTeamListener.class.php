@@ -38,7 +38,8 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 								$sql = "SELECT		groupID
 									FROM		wcf".WCF_N."_group
 									WHERE		groupID = ".$this->markTeamMessageGroupID."
-									AND 		groupID IN (".implode(',', WCF::getUser()->getGroupIDs()).")";
+									AND 		groupID IN (".implode(',', WCF::getUser()->getGroupIDs()).")
+									AND		markAsTeam = 1";
 								$row = WCF::getDB()->getFirstRow($sql);
 								if (!isset($row['groupID'])) throw new UserInputException('markTeamMessageGroupID');
 								

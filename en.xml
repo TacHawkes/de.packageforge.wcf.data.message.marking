@@ -14,6 +14,11 @@
 		<item name="wcf.acp.option.module_users_online"><![CDATA[Team message markings]]></item>
 		<item name="wcf.acp.option.module_users_online.description"><![CDATA[Activates team message markings.]]></item>		
 	</category>	
+	<category name="wcf.acp.user">		
+		<item name="wcf.acp.user.assignTeamMessageMarking"><![CDATA[Set team message marking for users]]></item>
+		<item name="wcf.acp.user.assignTeamMessageMarking.markTeamMessageGroupID"><![CDATA[Group for team message marking]]></item>
+		<item name="wcf.acp.user.assignTeamMessageMarking.markTeamMessageGroupID.description"><![CDATA[The chosen group marking will be set to all users affected by these conditions.]]></item>		
+	</category>
 	<category name="wcf.message">				
 		<item name="wcf.message.settings.markAsTeamMessage"><![CDATA[Mark as team message]]></item>
 		<item name="wcf.message.settings.markAsTeamMessage.description"><![CDATA[Marks this message as a team message with the marking you've selected in your profile.]]></item>		
