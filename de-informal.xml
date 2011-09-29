@@ -11,8 +11,8 @@
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectTeamMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können in ihrem Profil eine Team-Nachrichten-Markierung wählen.]]></item>		
 	</category>		
 	<category name="wcf.acp.option">		
-		<item name="wcf.acp.option.module_users_online"><![CDATA[Markierung von Teamnachrichten]]></item>
-		<item name="wcf.acp.option.module_users_online.description"><![CDATA[Aktiviert die Markierung von Teamnachrichten.]]></item>		
+		<item name="wcf.acp.option.module_user_mark_team_message"><![CDATA[Markierung von Teamnachrichten]]></item>
+		<item name="wcf.acp.option.module_user_mark_team_message.description"><![CDATA[Aktiviert die Markierung von Teamnachrichten.]]></item>		
 	</category>
 	<category name="wcf.acp.user">		
 		<item name="wcf.acp.user.assignTeamMessageMarking"><![CDATA[Teamnachrichten Markierung von Benutzern setzen]]></item>
