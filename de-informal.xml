@@ -17,7 +17,7 @@
 	<category name="wcf.acp.user">		
 		<item name="wcf.acp.user.assignTeamMessageMarking"><![CDATA[Teamnachrichten Markierung von Benutzern setzen]]></item>
 		<item name="wcf.acp.user.assignTeamMessageMarking.markTeamMessageGroupID"><![CDATA[Gruppe für Teamnachrichtenmarkierung]]></item>
-		<item name="wcf.acp.user.assignTeamMessageMarking.markTeamMessageGroupID.description"><![CDATA[Die hier Markierung der hier ausgewählten Gruppe wird bei den gewählten Benutzern gesetzt.]]></item>		
+		<item name="wcf.acp.user.assignTeamMessageMarking.markTeamMessageGroupID.description"><![CDATA[Die Markierung der hier ausgewählten Gruppe wird bei den gewählten Benutzern gesetzt.]]></item>		
 	</category>
 	<category name="wcf.message">				
 		<item name="wcf.message.settings.markAsTeamMessage"><![CDATA[Als Teamnachricht markieren]]></item>

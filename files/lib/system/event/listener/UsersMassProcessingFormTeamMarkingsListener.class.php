@@ -32,13 +32,15 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 				if (isset($_POST['markTeamMessageGroupID'])) $this->markTeamMessageGroupID = intval($_POST['markTeamMessageGroupID']);
 			}
 			else if ($eventName == 'validate') {
-				if ($eventObj->action == 'assignTeamMessageMarking') {					
-					$sql = "SELECT		groupID
-						FROM		wcf".WCF_N."_group
-						WHERE		groupID = ".$this->markTeamMessageGroupID."
-						AND 		markAsTeam = 1";
-					$row = WCF::getDB()->getFirstRow($sql);
-					if (!isset($row['groupID'])) throw new UserInputException('markTeamMessageGroupID');
+				if ($eventObj->action == 'assignTeamMessageMarking') {
+					if ($this->markTeamMessageGroupID != 0) {			
+						$sql = "SELECT		groupID
+							FROM		wcf".WCF_N."_group
+							WHERE		groupID = ".$this->markTeamMessageGroupID."
+							AND 		markAsTeam = 1";
+						$row = WCF::getDB()->getFirstRow($sql);
+						if (!isset($row['groupID'])) throw new UserInputException('markTeamMessageGroupID');
+					}
 				}
 			}
 			else if ($eventName == 'buildConditions') {
@@ -53,15 +55,17 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 						$userIDArray[] = $row['userID'];
 					}
 					
-					// filter user ids
-					$sql = "SELECT		userID
-						FROM		wcf".WCF_N."_user_to_groups
-						WHERE		groupID = ".$this->markTeamMessageGroupID."
-						AND		userID IN (".implode(',', $userIDArray).")";
-					$result = WCF::getDB()->sendQuery($sql);
-					$userIDArray = array(); 
-					while ($row = WCF::getDB()->fetchArray($result)) {
-						$userIDArray[] = $row['userID'];
+					if ($this->markTeamMessageGroupID != 0) {
+						// filter user ids
+						$sql = "SELECT		userID
+							FROM		wcf".WCF_N."_user_to_groups
+							WHERE		groupID = ".$this->markTeamMessageGroupID."
+							AND		userID IN (".implode(',', $userIDArray).")";
+						$result = WCF::getDB()->sendQuery($sql);
+						$userIDArray = array(); 
+						while ($row = WCF::getDB()->fetchArray($result)) {
+							$userIDArray[] = $row['userID'];
+						}
 					}
 						
 					if (count($userIDArray)) {
@@ -86,8 +90,7 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 				$markings = array();
 				$sql = "SELECT		groupID, groupName, markAsTeamCss
 					FROM		wcf".WCF_N."_group
-					WHERE		groupID IN (".implode(',', $groupIDs).")
-					AND		markAsTeam = 1
+					WHERE		markAsTeam = 1
 					ORDER BY	groupID ASC";
 				$result = WCF::getDB()->sendQuery($sql);
 				while ($row = WCF::getDB()->fetchArray($result)) {					
