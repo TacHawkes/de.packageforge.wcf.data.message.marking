@@ -44,7 +44,7 @@ class TeamMarkingsUtil {
 	}
 
 	/**
-	 * Append the target selector
+	 * Append the given selector with the target selectors
 	 * e.g.: .foo { ... } becomes #targetA .foo, #targetB .foo { ... }
 	 *
 	 * @param 	string 		$selector
