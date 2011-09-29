@@ -27,6 +27,7 @@
 		<files>files.tar</files>
 		<templates>templates.tar</templates>		
 		<sql>install.sql</sql>
+		<script>acp/markteamInstall.php</script>
 		
 		<!-- config -->
 		<eventlistener>eventlistener.xml</eventlistener>
