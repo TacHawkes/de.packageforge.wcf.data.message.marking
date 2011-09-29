@@ -16,11 +16,11 @@ require_once(WCF_DIR.'lib/data/user/UserProfile.class.php');
 class DummySidebarObject implements MessageSidebarObject {
 	/**
 	 * user object
-	 * 
+	 *
 	 * @var UserProfile
 	 */
 	protected $user = null;
-	
+
 	/**
 	 * Magic get method
 	 *
@@ -28,8 +28,8 @@ class DummySidebarObject implements MessageSidebarObject {
 	 */
 	public function __get($name) {
 		return null;
-	}	
-	
+	}
+
 	// MessageSidebarObject implementation
 	/**
 	 * @see MessageSidebarObject::getUser()
@@ -40,14 +40,14 @@ class DummySidebarObject implements MessageSidebarObject {
 		}
 		return $this->user;
 	}
-	
+
 	/**
 	 * @see MessageSidebarObject::getMessageID()
 	 */
 	public function getMessageID() {
 		return 0;
 	}
-	
+
 	/**
 	 * @see MessageSidebarObject::getMessageType()
 	 */

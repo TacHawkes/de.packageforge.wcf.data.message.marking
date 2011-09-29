@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
 
 /**
  * Adds the user online marking select to user add form.
- * 
+ *
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -17,29 +17,29 @@ require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
 class UserAddFormMessageMarkAsTeamListener implements EventListener {
 	/**
 	 * group id
-	 * 	 
+	 *
 	 * @var integer
 	 */
 	protected $markTeamMessageGroupID = 0;
-	
+
 	/**
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
 		if (MODULE_USER_MARK_TEAM_MESSAGE == 1) {
 			if ($eventObj instanceof UserEditForm) {
-				$groupIDs = $eventObj->user->getGroupIDs();				
+				$groupIDs = $eventObj->user->getGroupIDs();
 			}
 			else {
-				$groupIDs = Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS));				
+				$groupIDs = Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS));
 			}
-			
+				
 			if ($eventName == 'readFormParameters') {
 				if (isset($_POST['markTeamMessageGroupID'])) $this->markTeamMessageGroupID = intval($_POST['markTeamMessageGroupID']);
 			}
 			else if ($eventName == 'validate') {
 				$groupIDs = array_unique(array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $eventObj->groupIDs));
-				
+
 				if ($this->markTeamMessageGroupID != 0) {
 					// try to validate
 					$sql = "SELECT		groupID
@@ -50,7 +50,7 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 					$row = WCF::getDB()->getFirstRow($sql);
 					if (!isset($row['groupID'])) $this->markTeamMessageGroupID = 0;
 				}
-				
+
 				// save group id
 				$eventObj->additionalFields['markTeamMessageGroupID'] = $this->markTeamMessageGroupID;
 			}
@@ -59,9 +59,9 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 					// get current values
 					$this->markTeamMessageGroupID = $eventObj->user->markTeamMessageGroupID;
 				}
-				
+
 				$fields = array();
-				
+
 				$markings = array();
 				$sql = "SELECT		groupID, groupName, markAsTeamCss
 					FROM		wcf".WCF_N."_group
@@ -69,10 +69,10 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 					AND		markAsTeam = 1
 					ORDER BY	groupID ASC";
 				$result = WCF::getDB()->sendQuery($sql);
-				while ($row = WCF::getDB()->fetchArray($result)) {					
+				while ($row = WCF::getDB()->fetchArray($result)) {
 					$markings[] = $row;
 				}
-				
+
 				if (count($markings)) {
 					WCF::getTPL()->assign(array(
 						'markings' => $markings,
@@ -84,9 +84,9 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 	                       			'beforeLabel' => false,
 	                       			'isOptionGroup' => true,
 	                        		'html' => WCF::getTPL()->fetch('userAddTeamMessageMarkingSelect')
-	                        	);
+					);
 				}
-							
+					
 				// add fields
 				if (count($fields) > 0) {
 					foreach ($eventObj->options as $key1 => $category1) {
@@ -97,7 +97,7 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 									return;
 								}
 							}
-							
+								
 							$eventObj->options[$key1]['categories'][] = array(
 								'categoryName' => 'profile.rank',
 								'categoryIconM' => RELATIVE_WCF_DIR . 'icon/userProfileRankM.png',

@@ -33,7 +33,7 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 			}
 			else if ($eventName == 'validate') {
 				if ($eventObj->action == 'assignTeamMessageMarking') {
-					if ($this->markTeamMessageGroupID != 0) {			
+					if ($this->markTeamMessageGroupID != 0) {
 						$sql = "SELECT		groupID
 							FROM		wcf".WCF_N."_group
 							WHERE		groupID = ".$this->markTeamMessageGroupID."
@@ -54,7 +54,7 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 					while ($row = WCF::getDB()->fetchArray($result)) {
 						$userIDArray[] = $row['userID'];
 					}
-					
+						
 					if ($this->markTeamMessageGroupID != 0) {
 						// filter user ids
 						$sql = "SELECT		userID
@@ -62,12 +62,12 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 							WHERE		groupID = ".$this->markTeamMessageGroupID."
 							AND		userID IN (".implode(',', $userIDArray).")";
 						$result = WCF::getDB()->sendQuery($sql);
-						$userIDArray = array(); 
+						$userIDArray = array();
 						while ($row = WCF::getDB()->fetchArray($result)) {
 							$userIDArray[] = $row['userID'];
 						}
 					}
-						
+
 					if (count($userIDArray)) {
 						// save assignment
 						$sql = "UPDATE	wcf".WCF_N."_user
@@ -85,7 +85,7 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 			}
 			else if ($eventName == 'assignVariables') {
 				WCF::getTPL()->append('additionalActions', '<li><label><input onclick="if (IS_SAFARI) enableAssignTeamMessageMarking()" onfocus="enableAssignTeamMessageMarking()" type="radio" name="action" value="assignTeamMessageMarking" '.($eventObj->action == 'assignTeamMessageMarking' ? 'checked="checked" ' : '').'/> '.WCF::getLanguage()->get('wcf.acp.user.assignTeamMessageMarking').'</label></li>');
-				
+
 				// read markings
 				$markings = array();
 				$sql = "SELECT		groupID, groupName, markAsTeamCss
@@ -93,10 +93,10 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 					WHERE		markAsTeam = 1
 					ORDER BY	groupID ASC";
 				$result = WCF::getDB()->sendQuery($sql);
-				while ($row = WCF::getDB()->fetchArray($result)) {					
+				while ($row = WCF::getDB()->fetchArray($result)) {
 					$markings[] = $row;
 				}
-				
+
 				WCF::getTPL()->assign(array(
 					'markings' => $markings,
 					'markTeamMessageGroupID' => $this->markTeamMessageGroupID,

@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/data/user/teamMarkings/DummySidebarObject.class.php');
 
 /**
  * Adds the team marking select to the user profile edit form.
- * 
+ *
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -17,11 +17,11 @@ require_once(WCF_DIR.'lib/data/user/teamMarkings/DummySidebarObject.class.php');
 class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 	/**
 	 * group id
-	 * 	 
+	 *
 	 * @var integer
 	 */
 	protected $markTeamMessageGroupID = 0;
-	
+
 	/**
 	 * @see EventListener::execute()
 	 */
@@ -31,7 +31,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 				if ($eventName == 'validate') {
 					if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
 						if (isset($_POST['markTeamMessageGroupID'])) $this->markTeamMessageGroupID = intval($_POST['markTeamMessageGroupID']);
-						
+
 						// validate mark team message group id
 						if ($this->markTeamMessageGroupID) {
 							try {
@@ -42,7 +42,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 									AND		markAsTeam = 1";
 								$row = WCF::getDB()->getFirstRow($sql);
 								if (!isset($row['groupID'])) throw new UserInputException('markTeamMessageGroupID');
-								
+
 								// save groupID
 								$eventObj->additionalFields['markTeamMessageGroupID'] = $this->markTeamMessageGroupID;
 							}
@@ -61,9 +61,9 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 						// get current value
 						$this->markTeamMessageGroupID = WCF::getUser()->markTeamMessageGroupID;
 					}
-					
+						
 					$fields = array();
-					
+						
 					// get team message markings
 					if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
 						$markings = array();
@@ -74,21 +74,21 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 							ORDER BY	groupID ASC";
 						$result = WCF::getDB()->sendQuery($sql);
 						while ($row = WCF::getDB()->fetchArray($result)) {
-							$row['parsedCSS'] = TeamMarkingsUtil::parseCSS($row['markAsTeamCss'], array('#teamMarkingPreview'.$row['groupID']));							
+							$row['parsedCSS'] = TeamMarkingsUtil::parseCSS($row['markAsTeamCss'], array('#teamMarkingPreview'.$row['groupID']));
 							$markings[] = $row;
 						}
-						
+
 						if (count($markings)) {
 							$sidebarFactory = new MessageSidebarFactory($this);
 							$sidebarFactory->create(new DummySidebarObject());
 							$sidebarFactory->init();
-							
+								
 							$additionalCSS = '';
 							foreach ($markings as $marking) {
 								$additionalCSS .= $marking['parsedCSS'];
 							}
 							WCF::getTPL()->append('specialStyles', '<style type="text/css">'.$additionalCSS.'</style>');
-							
+								
 							WCF::getTPL()->assign(array(
 								'markings' => $markings,
 								'markTeamMessageGroupID' => $this->markTeamMessageGroupID,
@@ -100,10 +100,10 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 			                       			'beforeLabel' => false,
 			                       			'isOptionGroup' => true,
 			                        		'html' => WCF::getTPL()->fetch('userProfileEditTeamMessageMarkingSelect')
-			                        	);
+							);
 						}
 					}
-				
+
 					// add fields
 					if (count($fields) > 0) {
 						foreach ($eventObj->options as $key => $category) {
@@ -112,7 +112,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 								return;
 							}
 						}
-						
+
 						$eventObj->options[] = array(
 							'categoryName' => 'profile.rank',
 							'categoryIconM' => '',
