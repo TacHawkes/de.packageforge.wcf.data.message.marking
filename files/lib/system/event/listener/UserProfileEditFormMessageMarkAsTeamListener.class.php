@@ -29,8 +29,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 		if (MODULE_USER_MARK_TEAM_MESSAGE == 1) {
 			if ($eventObj->activeCategory == 'profile') {
 				if ($eventName == 'validate') {
-					// TODO: Remove debug
-					//if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
+					if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
 						if (isset($_POST['markTeamMessageGroupID'])) $this->markTeamMessageGroupID = intval($_POST['markTeamMessageGroupID']);
 						
 						// validate mark team message group id
@@ -54,7 +53,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 							// save groupID
 							$eventObj->additionalFields['markTeamMessageGroupID'] = 0;
 						}
-					// }
+					}
 				}
 				else if ($eventName == 'assignVariables') {
 					if (!count($_POST)) {
@@ -65,8 +64,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 					$fields = array();
 					
 					// get team message markings
-					// TODO: remove debug!
-					// if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
+					if (WCF::getUser()->getPermission('user.profile.rank.canSelectTeamMessageMarking')) {
 						$markings = array();
 						$sql = "SELECT		groupID, groupName, markAsTeamCss
 							FROM		wcf".WCF_N."_group
@@ -103,7 +101,7 @@ class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
 			                        		'html' => WCF::getTPL()->fetch('userProfileEditTeamMessageMarkingSelect')
 			                        	);
 						}
-					//}
+					}
 				
 					// add fields
 					if (count($fields) > 0) {

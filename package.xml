@@ -4,7 +4,7 @@
 		<packagename>Mark Team (WCF Package) members</packagename>
 		<packagedescription></packagedescription>
 		<isunique>1</isunique>
-		<version>1.0.0 alpha 1</version>
+		<version>1.0.0 alpha 2</version>
 		<date>2011-09-28</date>
 	</packageinformation>
 
@@ -25,15 +25,18 @@
 		<!-- files -->
 		<acptemplates>acptemplates.tar</acptemplates>
 		<files>files.tar</files>
+		<templates>templates.tar</templates>		
 		<sql>install.sql</sql>
 		
 		<!-- config -->
 		<eventlistener>eventlistener.xml</eventlistener>
 		<options>options.xml</options>
 		<groupoptions>groupoptions.xml</groupoptions>
+		<useroptions>useroptions.xml</useroptions>
 		
 		<!-- language -->
 		<languages languagecode="de">de.xml</languages>
 		<languages languagecode="de-informal">de-informal.xml</languages>
-	</instructions>
+		<languages languagecode="en">en.xml</languages>
+	</instructions>		
 </package>

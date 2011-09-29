@@ -28,16 +28,14 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 	public function execute($eventObj, $className, $eventName) {
 		if (MODULE_USER_MARK_TEAM_MESSAGE == 1) {
 			if ($eventObj instanceof UserEditForm) {
-				$groupIDs = $eventObj->user->getGroupIDs();
-				$username = $eventObj->user->username;
+				$groupIDs = $eventObj->user->getGroupIDs();				
 			}
 			else {
-				$groupIDs = Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS));
-				$username = WCF::getLanguage()->get('wcf.user.username');
+				$groupIDs = Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS));				
 			}
 			
 			if ($eventName == 'readFormParameters') {
-				if (isset($_POST['markTeamMessageGroupID'])) $this->userOnlineGroupID = intval($_POST['markTeamMessageGroupID']);
+				if (isset($_POST['markTeamMessageGroupID'])) $this->markTeamMessageGroupID = intval($_POST['markTeamMessageGroupID']);
 			}
 			else if ($eventName == 'validate') {
 				$groupIDs = array_unique(array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $eventObj->groupIDs));
@@ -47,6 +45,7 @@ class UserAddFormMessageMarkAsTeamListener implements EventListener {
 					$sql = "SELECT		groupID
 						FROM		wcf".WCF_N."_group
 						WHERE		groupID = ".$this->markTeamMessageGroupID."
+						AND		markAsTeam = 1
 						AND 		groupID IN (".implode(',', $groupIDs).")";
 					$row = WCF::getDB()->getFirstRow($sql);
 					if (!isset($row['groupID'])) $this->markTeamMessageGroupID = 0;

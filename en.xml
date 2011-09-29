@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="en">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.markAsTeam"><![CDATA[Mark as team]]></item>
+		<item name="wcf.acp.group.markAsTeam.description"><![CDATA[Activate this option if you wan't to activate the marking of messages posted by this group.]]></item>
+		<item name="wcf.acp.group.markAsTeamCSS"><![CDATA[CSS declarations for this group]]></item>
+		<item name="wcf.acp.group.markAsTeamCSS.description"><![CDATA[Enter CSS declarations which are going to be applied to group members messages. The following example adds an orange bar to the left of the message content: <pre>.messageContent {
+   border-left: solid orange 10px;
+}</pre>]]></item>
+		<item name="wcf.acp.group.option.user.profile.rank.canSelectTeamMessageMarking"><![CDATA[Can select team-message-marking]]></item>
+		<item name="wcf.acp.group.option.user.profile.rank.canSelectTeamMessageMarking.description"><![CDATA[Group members can select a team-message-marking in their profile]]></item>
+	</category>
+	<category name="wcf.acp.option">		
+		<item name="wcf.acp.option.module_users_online"><![CDATA[Team message markings]]></item>
+		<item name="wcf.acp.option.module_users_online.description"><![CDATA[Activates team message markings.]]></item>		
+	</category>	
+	<category name="wcf.message">				
+		<item name="wcf.message.settings.markAsTeamMessage"><![CDATA[Mark as team message]]></item>
+		<item name="wcf.message.settings.markAsTeamMessage.description"><![CDATA[Marks this message as a team message with the marking you've selected in your profile.]]></item>		
+	</category>
+	<category name="wcf.user.option">
+		<item name="wcf.user.option.markTeamMessageGroupID"><![CDATA[Team message marking]]></item>
+		<item name="wcf.user.option.markTeamMessageGroupID.description"><![CDATA[Please choose a marking for your team messages.]]></item>
+	</category>
+</language>

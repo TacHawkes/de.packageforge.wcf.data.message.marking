@@ -35,6 +35,27 @@
 			<inherit>1</inherit>
 			<listenerclassfile>lib/system/event/listener/GroupAddFormTeamMarkingsListener.class.php</listenerclassfile>
 		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserAddForm</eventclassname>
+			<eventname>readFormParameters</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserAddForm</eventclassname>
+			<eventname>validate</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserAddForm</eventclassname>
+			<eventname>assignVariables</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+		</eventlistener>
 		<!-- /admin -->
 	</import>
 </data>

@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
-<language languagecode="de">
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="de-informal">
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.markAsTeam"><![CDATA[Als Team markieren]]></item>
-		<item name="wcf.acp.group.markAsTeamCSS"><![CDATA[]]></item>
-		<item name="wcf.acp.group.markAsTeamCSS.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.markAsTeam.description"><![CDATA[Sollen Nachrichten dieser Benutzergruppe als Teamnachrichten markiert werden können?]]></item>
+		<item name="wcf.acp.group.markAsTeamCSS"><![CDATA[CSS-Deklarationen für die Teammarkierung]]></item>
+		<item name="wcf.acp.group.markAsTeamCSS.description"><![CDATA[Gib hier CSS-Deklarationen ein, die auf Nachrichten von Mitgliedern dieser Benutzergruppe angewendet werden sollen. Das folgende Beispiel führt zu einem orangenem Balken am linken Rand der Nachricht: <pre>.messageContent {
+   border-left: solid orange 10px;
+}</pre>]]></item>
+		<item name="wcf.acp.group.option.user.profile.rank.canSelectTeamMessageMarking"><![CDATA[Kann Team-Nachrichten-Markierung wählen]]></item>
+		<item name="wcf.acp.group.option.user.profile.rank.canSelectTeamMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können in ihrem Profil eine Team-Nachrichten-Markierung wählen.]]></item>		
+	</category>		
+	<category name="wcf.acp.option">		
+		<item name="wcf.acp.option.module_users_online"><![CDATA[Markierung von Teamnachrichten]]></item>
+		<item name="wcf.acp.option.module_users_online.description"><![CDATA[Aktiviert die Markierung von Teamnachrichten.]]></item>		
+	</category>
+	<category name="wcf.message">				
+		<item name="wcf.message.settings.markAsTeamMessage"><![CDATA[Als Teamnachricht markieren]]></item>
+		<item name="wcf.message.settings.markAsTeamMessage.description"><![CDATA[Markiert diese Nachricht als Teambeitrag mit der von Dir festgelegten Teammarkierung.]]></item>		
+	</category>
+	<category name="wcf.user.option">
+		<item name="wcf.user.option.markTeamMessageGroupID"><![CDATA[Markierung von Teamnachrichten]]></item>
+		<item name="wcf.user.option.markTeamMessageGroupID.description"><![CDATA[Bitte wähle die gewünschte Markierung Deiner als Teammitglied markierten Nachrichten.]]></item>
 	</category>
 </language>

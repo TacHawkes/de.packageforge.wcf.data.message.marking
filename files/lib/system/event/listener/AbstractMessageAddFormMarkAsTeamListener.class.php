@@ -17,7 +17,7 @@ abstract class AbstractMessageAddFormMarkAsTeamListener implements EventListener
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		if (!in_array(WCF::getUser()->markTeamMessageGroupID, WCF::getUser()->getGroupIDs())) return;
+		if (!MODULE_USER_MARK_TEAM_MESSAGE || !in_array(WCF::getUser()->markTeamMessageGroupID, WCF::getUser()->getGroupIDs())) return;
 		
 		switch ($eventName) {
 			case 'assignVariables' :
@@ -25,7 +25,7 @@ abstract class AbstractMessageAddFormMarkAsTeamListener implements EventListener
 				break;
 			case 'saved' :
 				$markAsTeamMessage = isset($_POST['markAsTeamMessage']) ? 1 : 0;
-				$this->saveMessageObjectSetting($eventObj, $markAsTeamMessage);
+				$this->saveMessageObjectSetting($eventObj, $className, $markAsTeamMessage);
 				
 				$options = array('markAsTeamMessage' => $markAsTeamMessage);		
 				$editor = WCF::getUser()->getEditor();
