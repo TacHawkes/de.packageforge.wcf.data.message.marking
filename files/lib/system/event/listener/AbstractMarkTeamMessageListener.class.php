@@ -124,4 +124,3 @@ abstract class AbstractMarkTeamMessageListener implements EventListener {
 	 */
 	abstract public function getMessageContainerSelector($objectID);
 }
-?>

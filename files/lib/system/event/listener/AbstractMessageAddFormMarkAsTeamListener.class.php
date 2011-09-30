@@ -43,4 +43,3 @@ abstract class AbstractMessageAddFormMarkAsTeamListener implements EventListener
 	 */
 	abstract public function saveMessageObjectSetting($eventObj, $className, $markAsTeamMessage);
 }
-?>

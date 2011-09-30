@@ -55,4 +55,3 @@ class DummySidebarObject implements MessageSidebarObject {
 		return 'dummy';
 	}
 }
-?>

@@ -61,4 +61,3 @@ class GroupAddFormTeamMarkingsListener implements EventListener {
 		}
 	}
 }
-?>

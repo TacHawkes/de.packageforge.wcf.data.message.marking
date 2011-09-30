@@ -108,4 +108,3 @@ class UsersMassProcessingFormTeamMarkingsListener implements EventListener {
 		}
 	}
 }
-?>

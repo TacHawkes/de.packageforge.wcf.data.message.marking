@@ -20,4 +20,3 @@ $sql = "UPDATE 	wcf".WCF_N."_group_option_value
 				)
                 AND     optionValue = '0'";
 WCF::getDB()->sendQuery($sql);
-?>
