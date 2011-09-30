@@ -10,7 +10,10 @@
  * @category    Community Framework
  */
 class TeamMarkingsUtil {
-	protected static $cssSplitRegEx = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
+	/**
+	 * Regular expression for splitting the css into selector and content parts	 
+	 */
+	const CSS_SPLIT_REG_EX = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
 
 	/**
 	 * Parses the group css and inserts the target selectors.
@@ -23,7 +26,7 @@ class TeamMarkingsUtil {
 		$newCss = '';
 		$css = StringUtil::unifyNewlines($css);
 		// extract selectors and content
-		if (preg_match_all(self::$cssSplitRegEx, $css, $matches, PREG_SET_ORDER)) {
+		if (preg_match_all(self::CSS_SPLIT_REG_EX, $css, $matches, PREG_SET_ORDER)) {
 			foreach ($matches as $match) {
 				$selector = ltrim($match[1]);
 				$content = $match[2];

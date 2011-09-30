@@ -14,6 +14,13 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  */
 abstract class AbstractMessageAddFormMarkAsTeamListener implements EventListener {
 	/**
+	 * Flag whether to save the satting as user option or not.
+	 * 
+	 * @var boolean
+	 */
+	protected $saveSetting = true;
+	
+	/**
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
@@ -26,10 +33,12 @@ abstract class AbstractMessageAddFormMarkAsTeamListener implements EventListener
 			case 'saved' :
 				$markAsTeamMessage = isset($_POST['markAsTeamMessage']) ? 1 : 0;
 				$this->saveMessageObjectSetting($eventObj, $className, $markAsTeamMessage);
-
-				$options = array('markAsTeamMessage' => $markAsTeamMessage);
-				$editor = WCF::getUser()->getEditor();
-				$editor->updateOptions($options);
+				
+				if ($this->saveSetting) {
+					$options = array('markAsTeamMessage' => $markAsTeamMessage);
+					$editor = WCF::getUser()->getEditor();
+					$editor->updateOptions($options);
+				}
 				break;
 		}
 	}
