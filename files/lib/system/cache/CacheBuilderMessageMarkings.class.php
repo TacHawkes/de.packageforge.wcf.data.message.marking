@@ -1,0 +1,35 @@
+<?php
+// wcf imports
+require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
+
+/**
+ * Caches the message markings.
+ *
+ * @author      Oliver Kliebisch
+ * @copyright   2011 Oliver Kliebisch
+ * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @package     de.packageforge.wcf.markteam
+ * @subpackage	system.cache
+ * @category 	Community Framework
+ */
+class CacheBuilderBookGenres implements CacheBuilder {
+	/**
+	 * @see CacheBuilder::getData()
+	 */
+	public function getData($cacheResource) {		
+		$data = array();
+
+		// get all markings
+		$sql = "SELECT		*
+			FROM		wcf".WCF_N."_message_marking
+			ORDER BY	title ASC";
+		$result = WCF::getDB()->sendQuery($sql);
+
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			$data[$row['markingID']] = $row;
+		}
+
+		return $data;
+	}
+}
+?>
