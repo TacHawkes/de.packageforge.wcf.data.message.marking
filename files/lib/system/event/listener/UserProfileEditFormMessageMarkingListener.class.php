@@ -14,7 +14,7 @@ require_once(WCF_DIR.'lib/data/message/marking/util/DummySidebarObject.class.php
  * @subpackage  system.event.listener
  * @category    Community Framework
  */
-class UserProfileEditFormMessageMarkAsTeamListener implements EventListener {
+class UserProfileEditFormMessageMessageMarkingListener implements EventListener {
 	/**
 	 * default message marking id
 	 *

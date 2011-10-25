@@ -14,7 +14,7 @@ require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
  * @subpackage  system.event.listener
  * @category    Community Framework
  */
-class UserAddFormDefaultMessageMarkingListener implements EventListener {
+class UserAddFormMessageMarkingListener implements EventListener {
 	/**
 	 * message marking id
 	 *

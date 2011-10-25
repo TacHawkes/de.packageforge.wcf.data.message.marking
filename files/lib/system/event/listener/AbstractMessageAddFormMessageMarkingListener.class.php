@@ -32,7 +32,7 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 				case 'saved' :
 					$markingID = intval($_POST['markingID']);
 					if (isset($availableMarkings[$markingID])) {
-						$this->saveMessageObjectSetting($eventObj, $className, $markAsTeamMessage);
+						$this->saveMessageObjectSetting($eventObj, $className, $markingID);
 					}
 					break;
 			}
@@ -40,11 +40,11 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 	}
 
 	/**
-	 * Saves the message setting
+	 * Saves the marking id
 	 *
 	 * @param 	mixed 		$eventObj
 	 * @param	string		$className
-	 * @param 	integer 	$markAsTeamMessage
+	 * @param 	integer 	$markingID
 	 */
-	abstract public function saveMessageObjectSetting($eventObj, $className, $markAsTeamMessage);
+	abstract public function saveMessageObjectSetting($eventObj, $className, $markingID);
 }

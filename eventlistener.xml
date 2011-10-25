@@ -5,56 +5,35 @@
 		<eventlistener>
 			<eventclassname>UserProfileEditForm</eventclassname>
 			<eventname>validate</eventname>						
-			<listenerclassfile>lib/system/event/listener/UserProfileEditFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UserProfileEditFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UserProfileEditForm</eventclassname>
 			<eventname>assignVariables</eventname>						
-			<listenerclassfile>lib/system/event/listener/UserProfileEditFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UserProfileEditFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<!-- /user -->
-		<!-- admin -->
-		<eventlistener>
-			<eventclassname>GroupAddForm</eventclassname>
-			<eventname>readFormParameters</eventname>
-			<environment>admin</environment>
-			<inherit>1</inherit>
-			<listenerclassfile>lib/system/event/listener/GroupAddFormTeamMarkingsListener.class.php</listenerclassfile>
-		</eventlistener>
-		<eventlistener>
-			<eventclassname>GroupAddForm</eventclassname>
-			<eventname>save</eventname>
-			<environment>admin</environment>
-			<inherit>1</inherit>
-			<listenerclassfile>lib/system/event/listener/GroupAddFormTeamMarkingsListener.class.php</listenerclassfile>
-		</eventlistener>
-		<eventlistener>
-			<eventclassname>GroupAddForm</eventclassname>
-			<eventname>assignVariables</eventname>
-			<environment>admin</environment>
-			<inherit>1</inherit>
-			<listenerclassfile>lib/system/event/listener/GroupAddFormTeamMarkingsListener.class.php</listenerclassfile>
-		</eventlistener>
+		<!-- admin -->		
 		<eventlistener>
 			<eventclassname>UserAddForm</eventclassname>
 			<eventname>readFormParameters</eventname>
 			<environment>admin</environment>
 			<inherit>1</inherit>
-			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UserAddForm</eventclassname>
 			<eventname>validate</eventname>
 			<environment>admin</environment>
 			<inherit>1</inherit>
-			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UserAddForm</eventclassname>
 			<eventname>assignVariables</eventname>
 			<environment>admin</environment>
 			<inherit>1</inherit>
-			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkAsTeamListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UserAddFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UsersMassProcessingForm</eventclassname>

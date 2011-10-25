@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/groupoptions.xsd">
 	<import>
+		<categories>
+			<category name="admin.display.messageMarking">
+				<parent>admin.display</parent>				
+			</category>			
+		</categories>
 		<options>
 			<option name="user.profile.rank.canSelectMessageMarking">
 				<categoryname>user.profile.rank</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
-				<options>module_user_mark_team_message</options>
+				<options>module_display_message_markings</options>
+			</option>
+			<option name="admin.display.canAddMessageMarking">
+				<categoryname>admin.display.messageMarking</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<options>module_display_message_markings</options>
+			</option>
+			<option name="admin.display.canEditMessageMarking">
+				<categoryname>admin.display.messageMarking</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<options>module_display_message_markings</options>
+			</option>
+			<option name="admin.display.canDeleteMessageMarking">
+				<categoryname>admin.display.messageMarking</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<options>module_display_message_markings</options>
 			</option>
 		</options>
 	</import>
