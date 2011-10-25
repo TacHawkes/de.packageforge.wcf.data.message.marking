@@ -18,7 +18,7 @@
 	//]]>
 </script>
 <ul class="formOptionsLong">
-	<li><label><input onclick="showMessageMarkingPreview(0)" type="radio" name="defaultMessageMarkingID" value="0" {if $defaultMessageMarkingID == 0}checked="checked" {/if}/> <span>{lang}wcf.user.option.defaultMessageMarkingID.none{/lang}</span></label></li>
+	<li><label><input onclick="showMessageMarkingPreview(0)" type="radio" name="defaultMessageMarkingID" value="0" {if $defaultMessageMarkingID == 0}checked="checked" {/if}/> <span>{lang}wcf.message.marking.defaultMessageMarkingID.none{/lang}</span></label></li>
 	{foreach from=$markings item=marking}
 		<li><label><input onclick="showMessageMarkingPreview({@$marking->markingID})" type="radio" name="defaultMessageMarkingID" value="{@$marking->markingID}" {if $marking->markingID == $defaultMessageMarkingID}checked="checked" {/if}/> <span>{lang}{$marking->title}{/lang}</span></label></li>
 	{/foreach}

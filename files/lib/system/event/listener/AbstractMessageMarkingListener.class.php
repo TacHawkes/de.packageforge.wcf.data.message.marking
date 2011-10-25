@@ -1,60 +1,46 @@
 <?php
 // wcf imports
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
-require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
+require_once(WCF_DIR.'lib/data/message/marking/MessageMarking.class.php');
 
 /**
- * Marks team member's messages
+ * Marks messages
  *
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  system.event.listener
  * @category    Community Framework
  */
-abstract class AbstractMarkTeamMessageListener implements EventListener {
-	/**
-	 * mark group ids
-	 *
-	 * @var array<integer>
-	 */
-	protected $groupIDs = array();
-
-	/**
-	 * mark groups
-	 *
-	 * @var array<Group>
-	 */
-	protected $groups = array();
-
+abstract class AbstractMessageMarkingListener implements EventListener {	
 	/**
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		if (MODULE_USER_MARK_TEAM_MESSAGE == 1) {
-			$this->loadTeamMessageGroups();
+		if (MODULE_DISPLAY_MESSAGE_MARKINGS == 1) {			
 			if ($eventName == 'readData') {
 				$this->appendMessageObjectList($eventObj, $className, $eventName);
 			}
 			else if ($eventName == 'assignVariables') {
-				$messageToGroups = array();
+				$messageToMarkings = array();
 				foreach ($this->getMessageObjects($eventObj, $className, $eventName) as $message) {
-					// check marking requirements and flag message for marking
-					if (in_array($message->markTeamMessageGroupID, explode(',', $message->groupIDs))
-					&& $message->markAsTeamMessage
-					&& $message->userID) {
-						if (!isset($messageToGroups[$message->markTeamMessageGroupID])) $messageToGroups[$message->markTeamMessageGroupID] = array();
-						$messageToGroups[$message->markTeamMessageGroupID][] = $this->getObjectID($message);
+					$markings = MessageMarking::getAvailableMarkings($message->groupIDs);
+					if ($message->userID 
+						&& $message->markingID != 0 
+						&& isset($markings[$message->markingID])) {
+						if (!isset($messageToMarkings[$message->markingID])) $messageToMarkings[$message->markingID] = array();
+						$messageToMarkings[$message->markingID][] = $this->getObjectID($message);
 					}
 				}
 
 				// append the special styles
-				if (count($messageToGroups)) {
+				if (count($messageToMarkings)) {
 					$additionalCSS = '';
-					foreach ($messageToGroups as $groupID => $objectIDs) {
-						if (isset($this->groups[$groupID])) {
-							$group = $this->groups[$groupID];
+					$allMarkings = MessageMarking::getCachedMarkings();
+					foreach ($messageToMarkings as $markingID => $objectIDs) {
+						if (isset($allMarkings[$markingID])) {
+							$marking = $allMarkings[$markingID];
 
 							// build selector
 							$targetSelectors = array();
@@ -62,31 +48,11 @@ abstract class AbstractMarkTeamMessageListener implements EventListener {
 								$targetSelectors[] = $this->getMessageContainerSelector($objectID);
 							}
 
-							$additionalCSS .= TeamMarkingsUtil::parseCSS($group->markAsTeamCSS, $targetSelectors);
+							$additionalCSS .= $message->getCSSOutput($targetSelectors);
 						}
 					}
 
 					WCF::getTPL()->append('specialStyles', '<style type="text/css">'.$additionalCSS.'</style>');
-				}
-			}
-		}
-	}
-
-	/**
-	 * Loads all groups with team marking css from cache
-	 */
-	protected function loadTeamMessageGroups() {
-		if (!count($this->groups)) {
-			// load all groups
-			WCF::getCache()->addResource('groups', WCF_DIR.'cache/cache.groups.php', WCF_DIR.'lib/system/cache/CacheBuilderGroups.class.php');
-			$cache = WCF::getCache()->get('groups');
-			$groups = $cache['groups'];
-
-			// filter
-			foreach ($groups as $group) {
-				if ($group['markAsTeam']) {
-					$this->groupIDs[] = $group['groupID'];
-					$this->groups[$group['groupID']] = new Group(null, $group);
 				}
 			}
 		}

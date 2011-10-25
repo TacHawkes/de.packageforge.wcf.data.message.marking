@@ -5,7 +5,7 @@
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  acp
  * @category    Community Framework
  */

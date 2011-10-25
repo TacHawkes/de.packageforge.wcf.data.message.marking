@@ -9,7 +9,7 @@ require_once(WCF_DIR.'lib/data/message/marking/MessageMarkingEditor.class.php');
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  acp.action
  * @category    Community Framework
  */
@@ -40,13 +40,13 @@ abstract class AbstractMessageMarkingAction extends AbstractAction {
 			throw new IllegalLinkException();
 		}
 	}
-	
+
 	/**
-	 * @see Action::executed()	 
+	 * @see Action::executed()
 	 */
 	public function executed() {
 		parent::executed();
-		
+
 		// clear cache
 		WCF::getCache()->clear(WCF_DIR.'cache/', 'cache.messageMarkings.php');
 	}

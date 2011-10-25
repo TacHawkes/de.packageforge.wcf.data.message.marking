@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/data/message/marking/MessageMarking.class.php');
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  data.message.marking
  * @category    Community Framework
  */

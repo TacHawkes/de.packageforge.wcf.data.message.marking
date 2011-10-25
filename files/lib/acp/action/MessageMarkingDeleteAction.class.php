@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/acp/action/AbstractMessageMarkingAction.class.php');
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  acp.action
  * @category    Community Framework
  */
@@ -24,7 +24,7 @@ class MessageMarkingDeleteAction extends AbstractMessageMarkingAction {
 
 		// delete marking
 		$this->messageMarking->delete();
-		
+
 		// call executed
 		$this->executed();
 

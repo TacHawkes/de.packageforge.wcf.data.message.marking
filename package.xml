@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<package name="de.packageforge.wcf.markteam" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/package.xsd">
+<package name="de.packageforge.wcf.data.message.marking" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/package.xsd">
 	<packageinformation>
-		<packagename>Mark Team (WCF Package) members</packagename>
+		<packagename>Message markings</packagename>
 		<packagedescription></packagedescription>
 		<isunique>1</isunique>
 		<version>1.0.0 beta 2</version>
@@ -18,6 +18,7 @@
 	</requiredpackages>
 
 	<excludepackages>
+		<excludepackage>de.packageforge.wcf.message.marking</excludepackage>
 		<excludepackage>de.webLonia.wcf.markteam</excludepackage>
 	</excludepackages>
 
@@ -27,13 +28,12 @@
 		<files>files.tar</files>
 		<templates>templates.tar</templates>		
 		<sql>install.sql</sql>
-		<script>acp/markteamInstall.php</script>
+		<script>acp/messageMarkingInstall.php</script>
 		
 		<!-- config -->
 		<eventlistener>eventlistener.xml</eventlistener>
 		<options>options.xml</options>
-		<groupoptions>groupoptions.xml</groupoptions>
-		<useroptions>useroptions.xml</useroptions>
+		<groupoptions>groupoptions.xml</groupoptions>		
 		
 		<!-- language -->
 		<languages languagecode="de">de.xml</languages>
@@ -41,9 +41,4 @@
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="1.0.0 beta 1">
-		<!-- files -->		
-		<files>files.tar</files>
-		<templates>templates.tar</templates>				
-	</instructions>		
 </package>

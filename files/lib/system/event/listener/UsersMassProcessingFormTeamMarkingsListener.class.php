@@ -3,12 +3,12 @@
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
 
 /**
- * Assigns users a team message marking
+ * Assigns users a message marking
  *
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  system.event.listener
  * @category    Community Framework
  */

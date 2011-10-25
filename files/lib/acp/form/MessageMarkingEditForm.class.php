@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/acp/form/MessageMarkingAddForm.class.php');
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  acp.form
  * @category    Community Framework
  */
@@ -66,7 +66,7 @@ class MessageMarkingEditForm extends MessageMarkingAddForm {
 		if (!count($_POST)) {
 			$this->title = $this->messageMarking->title;
 			$this->css = $this->messageMarking->css;
-			$this->groupIDs = explode(',', $this->messageMarking->groupIDs);			
+			$this->groupIDs = explode(',', $this->messageMarking->groupIDs);
 		}
 	}
 

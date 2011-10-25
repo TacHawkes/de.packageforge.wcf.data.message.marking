@@ -8,11 +8,25 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage  data.message.marking
  * @category    Community Framework
  */
-class MessageMarking extends DatabaseObject {	
+class MessageMarking extends DatabaseObject {
+	/**
+	 * stores the markings to groups
+	 * 
+	 * @var array<MessageMarking>
+	 */
+	protected static $markingsToGroups = array();
+	
+	/**
+	 * stores the markings
+	 * 
+	 * @var array<MessageMarking>
+	 */
+	protected static $markings = array();
+	
 	/**
 	 * Creates a new MessageMarking object.
 	 *
@@ -39,10 +53,10 @@ class MessageMarking extends DatabaseObject {
 	 * @param 	array<string>	$targetSelectors
 	 * @return	string
 	 */
-	public function getCSSOutput($targetSelector = array()) {
-		if (empty($targetSelector)) return $this->css;
+	public function getCSSOutput($targetSelectors = array()) {
+		if (empty($targetSelectors)) return $this->css;
 		
-		TeamMarkingsUtil::parseCSS($this->css, $targetSelector);
+		TeamMarkingsUtil::parseCSS($this->css, $targetSelectors);
 	}
 	
 	/**
@@ -52,21 +66,22 @@ class MessageMarking extends DatabaseObject {
 	 * @return 	array<MessageMarking>
 	 */
 	public static function getCachedMarkings($disabled = false) {
-		WCF::getCache()->addResource(
-			'messageMarkings',
-			WCF_DIR.'cache/cache.messageMarkings.php',
-			WCF_DIR.'lib/system/cache/CacheBuilderMessageMarkings.class.php'
-		);
+		if (!isset(self::$markings[$disabled])) {
+			WCF::getCache()->addResource(
+				'messageMarkings',
+				WCF_DIR.'cache/cache.messageMarkings.php',
+				WCF_DIR.'lib/system/cache/CacheBuilderMessageMarkings.class.php'
+			);
 
-		$data = WCF::getCache()->get('messageMarkings');
-		$markings = array();
+			$data = WCF::getCache()->get('messageMarkings');			
 
-		foreach ($data as $row) {
-			if ($row['disabled'] && !$disabled) continue;
-			$markings[$row['markingID']] = new MessageMarking(null, $row);
+			foreach ($data as $row) {
+				if ($row['disabled'] && !$disabled) continue;
+				self::$markings[$disabled][$row['markingID']] = new MessageMarking(null, $row);
+			}
 		}
 
-		return $markings;
+		return self::$markings;
 	}
 	
 	/**
@@ -82,15 +97,21 @@ class MessageMarking extends DatabaseObject {
 		}
 		$groupIDs = array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs);
 		
-		$allMarkings = self::getCachedMarkings();
-		foreach ($allMarkings as $markingID => $marking) {
-			$neededGroupIDs = explode(',', $marking->groupIDs);
-			if (empty(array_intersect($groupIDs, $neededGroupIDs))) {
-				unset($allMarkings[$markingID]);
+		$h = StringUtil::getHash($implode(',', $groupIDs));
+		if (!isset(self::$markingsToGroups[$h])) {
+		
+			$allMarkings = self::getCachedMarkings();
+			foreach ($allMarkings as $markingID => $marking) {
+				$neededGroupIDs = explode(',', $marking->groupIDs);
+				if (empty(array_intersect($groupIDs, $neededGroupIDs))) {
+					unset($allMarkings[$markingID]);
+				}
 			}
+			
+			self::$markingsToGroups[$h] = $allMarkings;
 		}
 		
-		return $allMarkings;
+		return self::$markingsToGroups[$h];
 	}
 }
 ?>

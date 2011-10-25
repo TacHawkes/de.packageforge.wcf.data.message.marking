@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package     de.packageforge.wcf.markteam
+ * @package     de.packageforge.wcf.message.marking
  * @subpackage	system.cache
  * @category 	Community Framework
  */
