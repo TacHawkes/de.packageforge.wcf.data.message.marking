@@ -9,7 +9,8 @@
 	</packageinformation>
 
 	<authorinformation>
-		<author><![CDATA[Oliver Kliebisch, Markus Bartz]]></author>
+		<author><![CDATA[Oliver Kliebisch]]></author>
+		<authorurl><![CDATA[http://www.packageforge.de]]></authorurl>
 	</authorinformation>
 
 	<requiredpackages>
@@ -31,6 +32,7 @@
 		<script>acp/messageMarkingInstall.php</script>
 		
 		<!-- config -->
+		<acpmenu>acpmenu.xml</acpmenu>
 		<eventlistener>eventlistener.xml</eventlistener>
 		<options>options.xml</options>
 		<groupoptions>groupoptions.xml</groupoptions>		

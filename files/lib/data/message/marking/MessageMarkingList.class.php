@@ -33,7 +33,7 @@ class MessageMarkingList extends DatabaseObjectList {
 	 * 
 	 * @var string
 	 */
-	public $sqlGroupBy = 'message.markingID';
+	public $sqlGroupBy = 'message_marking.markingID';
 
 	/**
 	 * @see DatabaseObjectList::countObjects()

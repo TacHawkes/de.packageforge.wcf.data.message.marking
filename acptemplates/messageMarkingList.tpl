@@ -8,7 +8,7 @@
 	</div>
 </div>
 
-{if $deletedMessageMarkingID}
+{if $deletedMarkingID}
 	<p class="success">{lang}wcf.acp.message.marking.delete.success{/lang}</p>
 {/if}
 
@@ -22,7 +22,7 @@
 	{/if}
 </div>
 
-{if $threadIconCategories|count}
+{if $markings|count}
 	<div class="border titleBarPanel">
 		<div class="containerHead"><h3>{lang}wcf.acp.message.marking.view.count{/lang}</h3></div>
 	</div>
@@ -37,7 +37,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			{foreach from=$threadIconCategories item=messageMarking}
+			{foreach from=$markings item=messageMarking}
 				<tr class="{cycle values="container-1,container-2"}">
 					<td class="columnIcon">
 						{if $this->user->getPermission('admin.display.canEditMessageMarking')}

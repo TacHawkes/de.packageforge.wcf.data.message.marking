@@ -1,5 +1,5 @@
 #!/bin/sh
-ARCHIVE_NAME="de.packageforge.wcf.message.marking.tar"
+ARCHIVE_NAME="de.packageforge.wcf.data.message.marking.tar"
 
 # remove old packages
 test -e files.tar && rm files.tar

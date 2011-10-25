@@ -1,6 +1,6 @@
 <?php
 // wcf imports
-require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
+require_once(WCF_DIR.'lib/page/SortablePage.class.php');
 require_once(WCF_DIR.'lib/data/message/marking/MessageMarkingList.class.php');
 
 /**
@@ -13,9 +13,10 @@ require_once(WCF_DIR.'lib/data/message/marking/MessageMarkingList.class.php');
  * @subpackage  acp.page
  * @category    Community Framework
  */
-class MessageMarkingListPage extends AbstractPage {
+class MessageMarkingListPage extends SortablePage {
 	// system
 	public $templateName = 'messageMarkingList';
+	public $defaultSortField = 'markingID';
 	public $deletedMarkingID = 0;
 	
 	/**
@@ -30,6 +31,9 @@ class MessageMarkingListPage extends AbstractPage {
 	 */
 	public function readParameters() {
 		parent::readParameters();
+
+		// init list
+		$this->markingList = new MessageMarkingList();
 		
 		if (isset($_REQUEST['deletedMarkingID'])) $this->deletedMarkingID = intval($_REQUEST['deletedMarkingID']);
 	}
@@ -41,8 +45,32 @@ class MessageMarkingListPage extends AbstractPage {
 		parent::readData();
 		
 		$this->markingList = new MessageMarkingList();
-		$this->markingList->sqlLimit = 0;
+		$this->markingList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
+		$this->markingList->sqlLimit = $this->itemsPerPage;
 		$this->markingList->readObjects();
+	}
+	
+	/**
+	 * @see SortablePage::validateSortField()
+	 */
+	public function validateSortField() {
+		parent::validateSortField();
+
+		switch ($this->sortField) {
+			case 'markingID':
+			case 'title':
+				break;
+			default: $this->sortField = $this->defaultSortField;
+		}
+	}
+	
+	/**
+	 * @see MultipleLinkPage::countItems()
+	 */
+	public function countItems() {
+		parent::countItems();
+
+		return $this->markingList->countObjects();
 	}
 	
 	/**
