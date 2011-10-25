@@ -5,7 +5,7 @@ require_once(WCF_DIR.'lib/acp/form/UserEditForm.class.php');
 require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
 
 /**
- * Adds the user online marking select to user add form.
+ * Adds the default message marking select to user add form.
  *
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
@@ -14,76 +14,64 @@ require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
  * @subpackage  system.event.listener
  * @category    Community Framework
  */
-class UserAddFormMessageMarkAsTeamListener implements EventListener {
+class UserAddFormDefaultMessageMarkingListener implements EventListener {
 	/**
-	 * group id
+	 * message marking id
 	 *
 	 * @var integer
 	 */
-	protected $markTeamMessageGroupID = 0;
+	protected $defaultMessageMarkingID = 0;
+	
+	/**
+	 * available message markings
+	 * 	 
+	 * @var array<MessageMarking>
+	 */
+	protected $availableMarkings = array();
 
 	/**
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		if (MODULE_USER_MARK_TEAM_MESSAGE == 1) {
+		if (MODULE_DISPLAY_MESSAGE_MARKINGS == 1) {
 			if ($eventObj instanceof UserEditForm) {
 				$groupIDs = $eventObj->user->getGroupIDs();
+				$this->availableMarkings = MessageMarking::getAvailableMarkings($groupIDs);
 			}
 			else {
 				$groupIDs = Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS));
+				$this->availableMarkings = MessageMarking::getAvailableMarkings($groupIDs);
 			}
-				
+			
 			if ($eventName == 'readFormParameters') {
-				if (isset($_POST['markTeamMessageGroupID'])) $this->markTeamMessageGroupID = intval($_POST['markTeamMessageGroupID']);
+				if (isset($_POST['defaultMessageMarkingID'])) $this->defaultMessageMarkingID = intval($_POST['defaultMessageMarkingID']);
 			}
 			else if ($eventName == 'validate') {
-				$groupIDs = array_unique(array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $eventObj->groupIDs));
-
-				if ($this->markTeamMessageGroupID != 0) {
-					// try to validate
-					$sql = "SELECT		groupID
-						FROM		wcf".WCF_N."_group
-						WHERE		groupID = ".$this->markTeamMessageGroupID."
-						AND		markAsTeam = 1
-						AND 		groupID IN (".implode(',', $groupIDs).")";
-					$row = WCF::getDB()->getFirstRow($sql);
-					if (!isset($row['groupID'])) $this->markTeamMessageGroupID = 0;
-				}
-
+				$this->availableMarkings = MessageMarking::getAvailableMarkings($eventObj->groupIDs);
+				if (!isset($this->availableMarkings[$this->defaultMessageMarkingID])) $this->defaultMessageMarkingID = 0;
+							
 				// save group id
-				$eventObj->additionalFields['markTeamMessageGroupID'] = $this->markTeamMessageGroupID;
+				$eventObj->additionalFields['defaultMessageMarkingID'] = $this->defaultMessageMarkingID;
 			}
 			else if ($eventName == 'assignVariables') {
 				if (!count($_POST) && $eventObj instanceof UserEditForm) {
 					// get current values
-					$this->markTeamMessageGroupID = $eventObj->user->markTeamMessageGroupID;
+					$this->defaultMessageMarkingID = $eventObj->user->defaultMessageMarkingID;
 				}
 
 				$fields = array();
-
-				$markings = array();
-				$sql = "SELECT		groupID, groupName, markAsTeamCss
-					FROM		wcf".WCF_N."_group
-					WHERE		groupID IN (".implode(',', $groupIDs).")
-					AND		markAsTeam = 1
-					ORDER BY	groupID ASC";
-				$result = WCF::getDB()->sendQuery($sql);
-				while ($row = WCF::getDB()->fetchArray($result)) {
-					$markings[] = $row;
-				}
-
-				if (count($markings)) {
+				
+				if (count($this->availableMarkings)) {
 					WCF::getTPL()->assign(array(
-						'markings' => $markings,
-						'markTeamMessageGroupID' => $this->markTeamMessageGroupID
+						'markings' => $this->availableMarkings,
+						'defaultMessageMarkingID' => $this->defaultMessageMarkingID
 					));
 					$fields[] = array(
-						'optionName' => 'markTeamMessageGroupID',
+						'optionName' => 'defaultMessageMarkingID',
 						'divClass' => 'formRadio',
 	                       			'beforeLabel' => false,
 	                       			'isOptionGroup' => true,
-	                        		'html' => WCF::getTPL()->fetch('userAddTeamMessageMarkingSelect')
+	                        		'html' => WCF::getTPL()->fetch('userAddMessageMarkingSelect')
 					);
 				}
 					

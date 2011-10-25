@@ -37,7 +37,7 @@ class MessageMarkingEditor extends MessageMarking {
 		// assign to groups
 		$marking->assignToGroups($groupIDs);
 		
-		return 		
+		return $marking;	
 	}
 
 	/**

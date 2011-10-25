@@ -2,8 +2,8 @@
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/options.xsd">
         <import>
                 <options>                        
-                        <option name="module_user_mark_team_message">
-                                <categoryname>module.user</categoryname>
+                        <option name="module_display_message_markings">
+                                <categoryname>module.display</categoryname>
                                 <optiontype>boolean</optiontype>
                                 <defaultvalue>1</defaultvalue>
                         </option>			

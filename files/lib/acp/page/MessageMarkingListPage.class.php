@@ -10,7 +10,7 @@ require_once(WCF_DIR.'lib/data/message/marking/MessageMarkingList.class.php');
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package     de.packageforge.wcf.markteam
- * @subpackage  data.message.marking
+ * @subpackage  acp.page
  * @category    Community Framework
  */
 class MessageMarkingListPage extends AbstractPage {
@@ -63,10 +63,10 @@ class MessageMarkingListPage extends AbstractPage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('wcf.acp.menu.link.messageMarking.markingList');
+		WCFACP::getMenu()->setActiveMenuItem('wcf.acp.menu.link.messageMarking.view');
 		
 		// check permission
-		WCF::getUser()->checkPermission(array('admin.messageMarking.canEditMarking', 'admin.book.canDeleteMarking'));
+		WCF::getUser()->checkPermission(array('admin.display.canEditMessageMarking', 'admin.display.canDeleteMessageMarking'));
 		
 		parent::show();
 	}

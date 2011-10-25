@@ -20,8 +20,12 @@ class CacheBuilderBookGenres implements CacheBuilder {
 		$data = array();
 
 		// get all markings
-		$sql = "SELECT		*
-			FROM		wcf".WCF_N."_message_marking
+		$sql = "SELECT		message_marking.*,
+					GROUP_CONCAT(DISTINCT groups.groupID ORDER BY groups.groupID ASC SEPARATOR ',') AS groupIDs
+			FROM		wcf".WCF_N."_message_marking message_marking
+			LEFT JOIN	wcf".WCF_N."_message_marking_to_group groups
+			ON		(groups.markingID = message_marking.markingID)			
+			GROUP BY	message_marking.markingID
 			ORDER BY	title ASC";
 		$result = WCF::getDB()->sendQuery($sql);
 

@@ -1,13 +1,13 @@
 <script type="text/javascript">
 	//<![CDATA[
-		var markingGroupIDs = new Array();
+		var markingIDs = new Array();
 		{foreach from=$markings item=marking}
-		markingGroupIDs.push({$marking.groupID});
+		markingIDs.push({$marking->markingID});
 		{/foreach}
 
-		function showTeamMarkingPreview(groupID) {
-			markingGroupIDs.each(function(id) {
-				if (id != groupID) {
+		function showMessageMarkingPreview(markingID) {
+			markingIDs.each(function(id) {
+				if (id != markingID) {
 					$('teamMarkingPreview' + id).hide();
 				}
 				else {
@@ -18,9 +18,9 @@
 	//]]>
 </script>
 <ul class="formOptionsLong">
-	<li><label><input onclick="showTeamMarkingPreview(0)" type="radio" name="markTeamMessageGroupID" value="0" {if $markTeamMessageGroupID == 0}checked="checked" {/if}/> <span>{lang}wcf.user.option.markTeamMessageGroupID.none{/lang}</span></label></li>
+	<li><label><input onclick="showMessageMarkingPreview(0)" type="radio" name="defaultMessageMarkingID" value="0" {if $defaultMessageMarkingID == 0}checked="checked" {/if}/> <span>{lang}wcf.user.option.defaultMessageMarkingID.none{/lang}</span></label></li>
 	{foreach from=$markings item=marking}
-		<li><label><input onclick="showTeamMarkingPreview({@$marking.groupID})" type="radio" name="markTeamMessageGroupID" value="{@$marking.groupID}" {if $marking.groupID == $markTeamMessageGroupID}checked="checked" {/if}/> <span>{lang}{$marking.groupName}{/lang}</span></label></li>
+		<li><label><input onclick="showMessageMarkingPreview({@$marking->markingID})" type="radio" name="defaultMessageMarkingID" value="{@$marking->markingID}" {if $marking->markingID == $defaultMessageMarkingID}checked="checked" {/if}/> <span>{lang}{$marking->title}{/lang}</span></label></li>
 	{/foreach}
 </ul>
 
@@ -47,7 +47,7 @@
 {assign var="author" value=$sidebar->getUser()}
 {assign var="messageID" value=0}				
 {foreach from=$markings item=marking}
-<div id="teamMarkingPreview{@$marking.groupID}" class="message"{if $marking.groupID != $markTeamMessageGroupID} style="display: none;"{/if}>
+<div id="messageMarkingPreview{@$marking->markingID}" class="message"{if $marking->markingID != $defaultMessageMarkingID} style="display: none;"{/if}>
 	<div class="messageInner {@$messageClass} container-{cycle name=postCycle}">										
 		{include file='messageSidebar'}
 					

@@ -27,6 +27,13 @@ class MessageMarkingList extends DatabaseObjectList {
 	 * @var	string
 	 */
 	public $sqlOrderBy = 'message_marking.title';
+	
+	/**
+	 * sql group by statement
+	 * 
+	 * @var string
+	 */
+	public $sqlGroupBy = 'message.markingID';
 
 	/**
 	 * @see DatabaseObjectList::countObjects()
@@ -44,8 +51,11 @@ class MessageMarkingList extends DatabaseObjectList {
 	 */
 	public function readObjects() {
 		$sql = "SELECT		".(!empty($this->sqlSelects) ? $this->sqlSelects.',' : '')."
-					message_marking.*
+					message_marking.*,
+					GROUP_CONCAT(DISTINCT groups.groupID ORDER BY groups.groupID ASC SEPARATOR ',') AS groupIDs
 			FROM		wcf".WCF_N."_message_marking message_marking
+			LEFT JOIN	wcf".WCF_N."_message_marking_to_group groups
+			ON		(groups.markingID = message_marking.markingID)
 			".$this->sqlJoins."
 			".(!empty($this->sqlConditions) ? "WHERE ".$this->sqlConditions : '')."
 			".(!empty($this->sqlGroupBy) ? "GROUP BY ".$this->sqlGroupBy : '')."

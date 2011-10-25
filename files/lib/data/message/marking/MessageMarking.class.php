@@ -21,13 +21,29 @@ class MessageMarking extends DatabaseObject {
 	 */
 	public function __construct($markingID, $row = null) {
 		if ($markingID !== null) {
-			$sql = "SELECT		message_marking.*
+			$sql = "SELECT		message_marking.*,
+						GROUP_CONCAT(DISTINCT groups.groupID ORDER BY groups.groupID ASC SEPARATOR ',') AS groupIDs
 				FROM 		wcf".WCF_N."_message_marking message_marking
-				WHERE 		message_marking.markingID = ".$markingID;
+				LEFT JOIN	wcf".WCF_N."_message_marking_to_group groups
+				ON		(groups.markingID = message_marking.markingID)
+				WHERE 		message_marking.markingID = ".$markingID."
+				GROUP BY	message_marking.markingID";
 			$row = WCF::getDB()->getFirstRow($sql);
 		}
 		parent::__construct($row);
-	}	
+	}
+	
+	/**
+	 * Returns the parsed css output of this marking
+	 * 
+	 * @param 	array<string>	$targetSelectors
+	 * @return	string
+	 */
+	public function getCSSOutput($targetSelector = array()) {
+		if (empty($targetSelector)) return $this->css;
+		
+		TeamMarkingsUtil::parseCSS($this->css, $targetSelector);
+	}
 	
 	/**
 	 * Returns the cached markings
@@ -51,6 +67,30 @@ class MessageMarking extends DatabaseObject {
 		}
 
 		return $markings;
+	}
+	
+	/**
+	 * Returns the available markings for the given set
+	 * of groupIDs
+	 *	 
+	 * @param	$groupIDs		array<integer>
+	 * @return 	array<MessageMarking>
+	 */
+	public static function getAvailableMarkings($groupIDs = array()) {
+		if (empty($groupIDs)) {
+			$groupIDs = WCF::getUser()->getGroupIDs();
+		}
+		$groupIDs = array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs);
+		
+		$allMarkings = self::getCachedMarkings();
+		foreach ($allMarkings as $markingID => $marking) {
+			$neededGroupIDs = explode(',', $marking->groupIDs);
+			if (empty(array_intersect($groupIDs, $neededGroupIDs))) {
+				unset($allMarkings[$markingID]);
+			}
+		}
+		
+		return $allMarkings;
 	}
 }
 ?>
