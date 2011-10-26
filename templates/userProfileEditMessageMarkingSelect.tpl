@@ -8,10 +8,10 @@
 		function showMessageMarkingPreview(markingID) {
 			markingIDs.each(function(id) {
 				if (id != markingID) {
-					$('teamMarkingPreview' + id).hide();
+					$('messageMarkingPreview' + id).hide();
 				}
 				else {
-					$('teamMarkingPreview' + id).show();
+					$('messageMarkingPreview' + id).show();
 				}
 			});
 		}

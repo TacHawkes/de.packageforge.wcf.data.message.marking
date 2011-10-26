@@ -51,7 +51,7 @@
 						<label for="css">{lang}wcf.acp.message.marking.css{/lang}</label>
 					</div>
 					<div class="formField">
-						<input type="text" class="inputText" name="css" id="css" value="{@$css}" />
+						<textarea id="css" name="css" rows="5">{$css}</textarea>						
 					</div>
 					<div class="formFieldDesc hidden" id="cssHelpMessage">
 						{lang}wcf.acp.message.marking.css.description{/lang}

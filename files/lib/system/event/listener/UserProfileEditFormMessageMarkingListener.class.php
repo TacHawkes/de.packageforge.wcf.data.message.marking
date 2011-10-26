@@ -2,6 +2,7 @@
 // wcf imports
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
 require_once(WCF_DIR.'lib/data/message/sidebar/MessageSidebarFactory.class.php');
+require_once(WCF_DIR.'lib/data/message/marking/MessageMarking.class.php');
 require_once(WCF_DIR.'lib/data/message/marking/util/DummySidebarObject.class.php');
 
 /**
@@ -14,7 +15,7 @@ require_once(WCF_DIR.'lib/data/message/marking/util/DummySidebarObject.class.php
  * @subpackage  system.event.listener
  * @category    Community Framework
  */
-class UserProfileEditFormMessageMessageMarkingListener implements EventListener {
+class UserProfileEditFormMessageMarkingListener implements EventListener {
 	/**
 	 * default message marking id
 	 *

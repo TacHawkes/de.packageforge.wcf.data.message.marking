@@ -14,7 +14,7 @@
 			<permissions>admin.display.canEditMessageMarking,admin.display.canDeleteMessageMarking</permissions>
 		</acpmenuitem>
 		
-		<acpmenuitem name="wcf.acp.menu.link.book.genreAdd">
+		<acpmenuitem name="wcf.acp.menu.link.messageMarking.add">
 			<parent>wcf.acp.menu.link.messageMarking</parent>
 			<link>index.php?form=MessageMarkingAdd</link>
 			<showorder>2</showorder>

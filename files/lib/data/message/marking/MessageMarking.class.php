@@ -54,9 +54,9 @@ class MessageMarking extends DatabaseObject {
 	 * @return	string
 	 */
 	public function getCSSOutput($targetSelectors = array()) {
-		if (empty($targetSelectors)) return $this->css;
+		if (!count($targetSelectors)) return $this->css;
 
-		TeamMarkingsUtil::parseCSS($this->css, $targetSelectors);
+		return TeamMarkingsUtil::parseCSS($this->css, $targetSelectors);
 	}
 
 	/**
@@ -95,7 +95,7 @@ class MessageMarking extends DatabaseObject {
 		if (!count($groupIDs)) {
 			$groupIDs = WCF::getUser()->getGroupIDs();
 		}
-		$groupIDs = array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs);
+		$groupIDs = array_unique(array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs));
 
 		$h = StringUtil::getHash(implode(',', $groupIDs));
 		if (!isset(self::$markingsToGroups[$h])) {

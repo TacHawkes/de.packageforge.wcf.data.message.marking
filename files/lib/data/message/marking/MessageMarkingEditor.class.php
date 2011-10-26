@@ -51,7 +51,7 @@ class MessageMarkingEditor extends MessageMarking {
 	public function update($title, $css, $groupIDs, $disabled = 0) {
 		$sql = "UPDATE	wcf".WCF_N."_message_marking
 			SET	title = '".escapeString($title)."',
-				css = '".escapeString($ratingCategoryID)."',
+				css = '".escapeString($css)."',
 				disabled = ".$disabled."
 			WHERE	markingID = ".$this->markingID;
 		WCF::getDB()->sendQuery($sql);

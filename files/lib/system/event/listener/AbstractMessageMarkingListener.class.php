@@ -25,7 +25,7 @@ abstract class AbstractMessageMarkingListener implements EventListener {
 			else if ($eventName == 'assignVariables') {
 				$messageToMarkings = array();
 				foreach ($this->getMessageObjects($eventObj, $className, $eventName) as $message) {
-					$markings = MessageMarking::getAvailableMarkings($message->groupIDs);
+					$markings = MessageMarking::getAvailableMarkings(explode(',', $message->groupIDs));
 					if ($message->userID 
 						&& $message->markingID != 0 
 						&& isset($markings[$message->markingID])) {
@@ -48,7 +48,7 @@ abstract class AbstractMessageMarkingListener implements EventListener {
 								$targetSelectors[] = $this->getMessageContainerSelector($objectID);
 							}
 
-							$additionalCSS .= $message->getCSSOutput($targetSelectors);
+							$additionalCSS .= $marking->getCSSOutput($targetSelectors);
 						}
 					}
 
