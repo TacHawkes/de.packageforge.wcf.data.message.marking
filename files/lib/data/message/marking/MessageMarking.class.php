@@ -81,7 +81,7 @@ class MessageMarking extends DatabaseObject {
 			}
 		}
 
-		return self::$markings;
+		return self::$markings[$disabled];
 	}
 
 	/**
@@ -97,7 +97,7 @@ class MessageMarking extends DatabaseObject {
 		}
 		$groupIDs = array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs);
 
-		$h = StringUtil::getHash($implode(',', $groupIDs));
+		$h = StringUtil::getHash(implode(',', $groupIDs));
 		if (!isset(self::$markingsToGroups[$h])) {
 
 			$allMarkings = self::getCachedMarkings();

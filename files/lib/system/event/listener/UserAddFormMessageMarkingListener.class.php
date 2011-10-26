@@ -2,7 +2,7 @@
 // wcf imports
 require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
 require_once(WCF_DIR.'lib/acp/form/UserEditForm.class.php');
-require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
+require_once(WCF_DIR.'lib/data/message/marking/MessageMarking.class.php');
 
 /**
  * Adds the default message marking select to user add form.

@@ -12,7 +12,7 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
  * @subpackage	system.cache
  * @category 	Community Framework
  */
-class CacheBuilderBookGenres implements CacheBuilder {
+class CacheBuilderMessageMarkings implements CacheBuilder {
 	/**
 	 * @see CacheBuilder::getData()
 	 */
