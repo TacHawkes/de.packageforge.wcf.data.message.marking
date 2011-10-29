@@ -27,13 +27,13 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 	public function execute($eventObj, $className, $eventName) {
 		if (MODULE_DISPLAY_MESSAGE_MARKINGS == 1) {
 			if ($eventName == 'readParameters') {
-				$eventObj->availableActions[] = 'assignMessageMarking';
+				$eventObj->availableActions[] = 'assignDefaultMessageMarking';
 			}
 			else if ($eventName == 'readFormParameters') {
 				if (isset($_POST['markingID'])) $this->markingID = intval($_POST['markingID']);
 			}
 			else if ($eventName == 'validate') {
-				if ($eventObj->action == 'assignMessageMarking') {					
+				if ($eventObj->action == 'assignDefaultMessageMarking') {					
 					if ($this->markingID != 0) {
 						$allMarkings = MessageMarking::getCachedMarkings();						
 						if (!isset($allMarkings[$this->markingID])) throw new UserInputException('markingID');
@@ -41,11 +41,11 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 				}
 			}
 			else if ($eventName == 'buildConditions') {
-				if ($eventObj->action == 'assignMessageMarking') {
+				if ($eventObj->action == 'assignDefaultMessageMarking') {
 					// get users
 					$users = array();
 					$sql = "SELECT		user.userID,
-								GROUP_CONCAT(DISTINCT groups.groupID ORDER BY groups.groupID ASC SEPARATOR ',') AS groupIDs					
+								GROUP_CONCAT(DISTINCT user_to_groups.groupID ORDER BY user_to_groups.groupID ASC SEPARATOR ',') AS groupIDs					
 						FROM		wcf".WCF_N."_user user
 						LEFT JOIN	wcf".WCF_N."_user_to_groups user_to_groups
 						ON		(user_to_groups.userID = user.userID)
@@ -58,7 +58,7 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 					
 					// if id != 0 check if id is available for each user
 					if ($this->markingID != 0) {
-						foreach ($users as $key => $users) {
+						foreach ($users as $key => $user) {
 							if (!count(MessageMarking::getAvailableMarkings($user->groupIDs, false))) {
 								unset($users[$key]);	
 							}
@@ -83,7 +83,7 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 				}
 			}
 			else if ($eventName == 'assignVariables') {
-				WCF::getTPL()->append('additionalActions', '<li><label><input onclick="if (IS_SAFARI) enableAssignMessageMarking()" onfocus="enableAssignMessageMarking()" type="radio" name="action" value="assignMessageMarking" '.($eventObj->action == 'assignMessageMarking' ? 'checked="checked" ' : '').'/> '.WCF::getLanguage()->get('wcf.acp.user.assignMessageMarking').'</label></li>');
+				WCF::getTPL()->append('additionalActions', '<li><label><input onclick="if (IS_SAFARI) enableAssignDefaultMessageMarking()" onfocus="enableAssignDefaultMessageMarking()" type="radio" name="action" value="assignDefaultMessageMarking" '.($eventObj->action == 'assignDefaultMessageMarking' ? 'checked="checked" ' : '').'/> '.WCF::getLanguage()->get('wcf.acp.user.assignDefaultMessageMarking').'</label></li>');
 
 				// read and assign markings
 				WCF::getTPL()->assign(array(
@@ -92,7 +92,7 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 					'errorField' => $eventObj->errorField,
 					'errorType' => $eventObj->errorType
 				));
-				WCF::getTPL()->append('additionalActionSettings', WCF::getTPL()->fetch('usersMassProcessingAssignMessageMarking'));
+				WCF::getTPL()->append('additionalActionSettings', WCF::getTPL()->fetch('usersMassProcessingAssignDefaultMessageMarking'));
 			}
 		}
 	}

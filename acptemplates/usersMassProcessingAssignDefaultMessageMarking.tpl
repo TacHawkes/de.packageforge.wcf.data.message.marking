@@ -1,14 +1,14 @@
-<div id="assignMessageMarkingDiv">
+<div id="assignDefaultMessageMarkingDiv">
 	<fieldset>
-		<legend>{lang}wcf.acp.user.assignMessageMarking{/lang}</legend>
+		<legend>{lang}wcf.acp.user.assignDefaultMessageMarking{/lang}</legend>
 		
 		<div class="formRadio formGroup" id="markingIDDiv">
 			<div class="formGroupLabel">
-				<label>{lang}wcf.acp.user.assignMessageMarking.markingID{/lang}</label>
+				<label>{lang}wcf.acp.user.assignDefaultMessageMarking.markingID{/lang}</label>
 			</div>
 			<div class="formGroupField">
 				<fieldset>
-					<legend>{lang}wcf.acp.user.assignMessageMarking.markingID{/lang}</legend>
+					<legend>{lang}wcf.acp.user.assignDefaultMessageMarking.markingID{/lang}</legend>
 						
 					<div class="formField">
 						<ul class="formOptionsLong">
@@ -20,7 +20,7 @@
 					</div>
 					
 					<div class="formFieldDesc" id="markingIDHelpMessage">
-						<p>{lang}wcf.acp.user.assignMessageMarking.markingID.description{/lang}</p>
+						<p>{lang}wcf.acp.user.assignDefaultMessageMarking.markingID.description{/lang}</p>
 					</div>
 					<script type="text/javascript">
 						//<![CDATA[
@@ -36,14 +36,14 @@
 <script type="text/javascript">
 	//<![CDATA[
 	// disable
-	function disableAssignMessageMarking() {
-		hideOptions('assignMessageMarkingDiv');
+	function disableAssignDefaultMessageMarking() {
+		hideOptions('assignDefaultMessageMarkingDiv');
 	}
 	
 	// enable
-	function enableAssignMessageMarking() {
+	function enableAssignDefaultMessageMarking() {
 		disableAll();
-		showOptions('assignMessageMarkingDiv');
+		showOptions('assignDefaultMessageMarkingDiv');
 	}
 	//]]>
 </script>
