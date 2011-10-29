@@ -23,14 +23,19 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 			
 			switch ($eventName) {
 				case 'assignVariables' :
-					WCF::getTPL()->assign(array(
-						'availableMarkings' => $availableMarkings,
-						'markingID' => WCF::getUser()->defaultMessageMarkingID
-					));
-					WCF::getTPL()->append('additionalInformationFields', WCF::getTPL()->fetch('messageMarkingSetting'));
-					break;
+					if (WCF::getUser()->getPermission('user.profile.rank.canSelectMessageMarking')) {
+						WCF::getTPL()->assign(array(
+							'availableMarkings' => $availableMarkings,
+							'markingID' => WCF::getUser()->defaultMessageMarkingID
+						));
+						WCF::getTPL()->append('additionalInformationFields', WCF::getTPL()->fetch('messageMarkingSetting'));
+						break;
+					}
 				case 'saved' :
-					$markingID = intval($_POST['markingID']);
+					if (isset($_POST['markingID'])) $markingID = intval($_POST['markingID']);
+					else {
+						$markingID = WCF::getUser()->defaultMessageMarkingID;
+					}					
 					if (isset($availableMarkings[$markingID])) {
 						$this->saveMessageObjectSetting($eventObj, $className, $markingID);
 					}

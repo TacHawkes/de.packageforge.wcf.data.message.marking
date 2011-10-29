@@ -39,31 +39,31 @@
 			<eventclassname>UsersMassProcessingForm</eventclassname>
 			<eventname>readParameters</eventname>
 			<environment>admin</environment>
-			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormTeamMarkingsListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UsersMassProcessingForm</eventclassname>
 			<eventname>readFormParameters</eventname>
 			<environment>admin</environment>
-			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormTeamMarkingsListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UsersMassProcessingForm</eventclassname>
 			<eventname>validate</eventname>
 			<environment>admin</environment>
-			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormTeamMarkingsListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UsersMassProcessingForm</eventclassname>
 			<eventname>buildConditions</eventname>
 			<environment>admin</environment>
-			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormTeamMarkingsListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
 			<eventclassname>UsersMassProcessingForm</eventclassname>
 			<eventname>assignVariables</eventname>
 			<environment>admin</environment>
-			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormTeamMarkingsListener.class.php</listenerclassfile>
+			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<!-- /admin -->
 	</import>

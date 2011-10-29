@@ -89,17 +89,21 @@ class MessageMarking extends DatabaseObject {
 	 * of groupIDs
 	 *
 	 * @param	$groupIDs		array<integer>
+	 * @param	$addDefaultGroups	boolean
 	 * @return 	array<MessageMarking>
 	 */
-	public static function getAvailableMarkings($groupIDs = array()) {
+	public static function getAvailableMarkings($groupIDs = array(), $addDefaultGroups = true) {
 		if (!count($groupIDs)) {
 			$groupIDs = WCF::getUser()->getGroupIDs();
 		}
-		$groupIDs = array_unique(array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs));
+		
+		// ensure everyone and users group id is included
+		if ($addDefaultGroups) {
+			$groupIDs = array_unique(array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs));
+		}
 
 		$h = StringUtil::getHash(implode(',', $groupIDs));
 		if (!isset(self::$markingsToGroups[$h])) {
-
 			$allMarkings = self::getCachedMarkings();
 			foreach ($allMarkings as $markingID => $marking) {
 				$neededGroupIDs = explode(',', $marking->groupIDs);
