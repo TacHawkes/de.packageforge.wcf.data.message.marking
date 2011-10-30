@@ -1,6 +1,7 @@
-<ul class="formOptionsLong">
-	<li><label><input type="radio" name="defaultMessageMarkingID" value="0" {if $defaultMessageMarkingID == 0}checked="checked" {/if}/> <span>{lang}wcf.user.option.defaultMessageMarkingID.none{/lang}</span></label></li>
+<select name="defaultMessageMarkingID" id="defaultMessageMarkingID">
+	<option value="0"{if $defaultMessageMarkingID == 0} selected="selected"{/if}>{lang}wcf.user.option.defaultMessageMarkingID.none{/lang}</option>
 	{foreach from=$markings item=marking}
-		<li><label><input type="radio" name="defaultMessageMarkingID" value="{@$marking->markingID}" {if $marking->markingID == $defaultMessageMarkingID}checked="checked" {/if}/> <span>{lang}{$marking->title}{/lang}</span></label></li>
+		<option value="{@$marking->markingID}"
+		{if $marking->markingID == $defaultMessageMarkingID} selected="selected"{/if}>{lang}{$marking->title}{/lang}</option>
 	{/foreach}
-</ul>	
+</select>

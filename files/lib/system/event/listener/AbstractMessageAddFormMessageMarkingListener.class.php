@@ -21,12 +21,12 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 		if (MODULE_DISPLAY_MESSAGE_MARKINGS) {
 			$availableMarkings = MessageMarking::getAvailableMarkings();
 			
-			switch ($eventName) {
+			switch ($eventName) {				
 				case 'assignVariables' :
 					if (WCF::getUser()->getPermission('user.profile.rank.canSelectMessageMarking')) {
 						WCF::getTPL()->assign(array(
 							'availableMarkings' => $availableMarkings,
-							'markingID' => WCF::getUser()->defaultMessageMarkingID
+							'markingID' => $this->getMarkingID($eventObj, $className)
 						));
 						WCF::getTPL()->append('additionalInformationFields', WCF::getTPL()->fetch('messageMarkingSetting'));
 						break;
@@ -52,4 +52,14 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 	 * @param 	integer 	$markingID
 	 */
 	abstract public function saveMessageObjectSetting($eventObj, $className, $markingID);
+	
+	/**
+	 * Returns the marking id. Either the user's default id on add processes
+	 * or the old if on edit processes.
+	 *
+	 * @param	mixed		$eventObj
+	 * @param	string		$className
+	 * @return	integer	 
+	 */
+	abstract public function getMarkingID($eventObj, $className);
 }

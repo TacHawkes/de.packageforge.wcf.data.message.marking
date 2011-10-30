@@ -17,12 +17,22 @@
 		}
 	//]]>
 </script>
-<ul class="formOptionsLong">
-	<li><label><input onclick="showMessageMarkingPreview(0)" type="radio" name="defaultMessageMarkingID" value="0" {if $defaultMessageMarkingID == 0}checked="checked" {/if}/> <span>{lang}wcf.message.marking.defaultMessageMarkingID.none{/lang}</span></label></li>
+
+<select name="defaultMarkingID" id="defaultMarkingID">
+	<option value="0"{if $defaultMessageMarkingID == 0} selected="selected"{/if}>{lang}wcf.user.option.defaultMessageMarkingID.none{/lang}</option>
 	{foreach from=$markings item=marking}
-		<li><label><input onclick="showMessageMarkingPreview({@$marking->markingID})" type="radio" name="defaultMessageMarkingID" value="{@$marking->markingID}" {if $marking->markingID == $defaultMessageMarkingID}checked="checked" {/if}/> <span>{lang}{$marking->title}{/lang}</span></label></li>
+		<option value="{@$marking->markingID}"
+		{if $marking->markingID == $defaultMessageMarkingID} selected="selected"{/if}>{lang}{$marking->title}{/lang}</option>
 	{/foreach}
-</ul>
+</select>
+
+<script type="text/javascript">
+	//<![CDATA[
+		$('defaultMarkingID').observe('change', function() {
+			showMessageMarkingPreview(this.getValue());
+		});
+	//]]>
+</script>
 
 {if $this->getStyle()->getVariable('messages.color.cycle')}
 	{cycle name=messageCycle values='2,1' print=false}

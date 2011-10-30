@@ -67,6 +67,7 @@ class MessageMarking extends DatabaseObject {
 	 */
 	public static function getCachedMarkings($disabled = false) {
 		if (!isset(self::$markings[$disabled])) {
+			self::$markings[$disabled] = array();
 			WCF::getCache()->addResource(
 				'messageMarkings',
 			WCF_DIR.'cache/cache.messageMarkings.php',
@@ -74,11 +75,11 @@ class MessageMarking extends DatabaseObject {
 			);
 
 			$data = WCF::getCache()->get('messageMarkings');
-
+			
 			foreach ($data as $row) {
 				if ($row['disabled'] && !$disabled) continue;
 				self::$markings[$disabled][$row['markingID']] = new MessageMarking(null, $row);
-			}
+			}						
 		}
 
 		return self::$markings[$disabled];
