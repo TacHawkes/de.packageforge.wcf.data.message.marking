@@ -1,30 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="de-informal">
-	<category name="wcf.acp.group">
-		<item name="wcf.acp.group.markAsTeam"><![CDATA[Als Team markieren]]></item>
-		<item name="wcf.acp.group.markAsTeam.description"><![CDATA[Sollen Nachrichten dieser Benutzergruppe als Teamnachrichten markiert werden können?]]></item>
-		<item name="wcf.acp.group.markAsTeamCSS"><![CDATA[CSS-Deklarationen für die Teammarkierung]]></item>
-		<item name="wcf.acp.group.markAsTeamCSS.description"><![CDATA[Gib hier CSS-Deklarationen ein, die auf Nachrichten von Mitgliedern dieser Benutzergruppe angewendet werden sollen. Das folgende Beispiel führt zu einem orangenem Balken am linken Rand der Nachricht: <pre>.messageContent {
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="de">
+	<category name="wcf.acp.menu">
+		<item name="wcf.acp.menu.link.messageMarking"><![CDATA[Nachrichtenmarkierung]]></item>
+		<item name="wcf.acp.menu.link.messageMarking.view"><![CDATA[Nachrichtenmarkierungen auflisten]]></item>
+		<item name="wcf.acp.menu.link.messageMarking.add"><![CDATA[Nachrichtenmarkierung hinzufügen]]></item>		
+	</category>
+	<category name="wcf.acp.message">
+		<item name="wcf.acp.message.marking.view"><![CDATA[Nachrichtenmarkierungen]]></item>
+		<item name="wcf.acp.message.marking.view.count"><![CDATA[Insgesamt {#$items} Nachrichtenmarkierung{if $items > 1}en{/if}]]></item>
+		<item name="wcf.acp.message.marking.view.count.noEntries"><![CDATA[Es sind keine Markierungen vorhanden.]]></item>
+		<item name="wcf.acp.message.marking.markingID"><![CDATA[ID]]></item>
+		<item name="wcf.acp.message.marking.title"><![CDATA[Titel]]></item>
+		<item name="wcf.acp.message.marking.title.description"><![CDATA[Bitte gib einen Titel für diese Nachrichtenmarkierung an.]]></item>
+		<item name="wcf.acp.message.marking.add"><![CDATA[Nachrichtenmarkierung hinzufügen]]></item>
+		<item name="wcf.acp.message.marking.add.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich hinzugefügt.]]></item>
+		<item name="wcf.acp.message.marking.edit"><![CDATA[Nachrichtenmarkierung bearbeiten]]></item>
+		<item name="wcf.acp.message.marking.edit.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich bearbeitet.]]></item>
+		<item name="wcf.acp.message.marking.general"><![CDATA[Allgemein]]></item>
+		<item name="wcf.acp.message.marking.css"><![CDATA[CSS-Code]]></item>
+		<item name="wcf.acp.message.marking.css.description"><![CDATA[Gib hier CSS-Deklarationen ein, die auf Nachrichten mit dieser Markierung angewendet werden sollen. Das folgende Beispiel führt zu einem orangenem Balken am linken Rand der Nachricht: <pre>.messageContent {
    border-left: solid orange 10px;
 }</pre>]]></item>
-		<item name="wcf.acp.group.option.user.profile.rank.canSelectTeamMessageMarking"><![CDATA[Kann Team-Nachrichten-Markierung wählen]]></item>
-		<item name="wcf.acp.group.option.user.profile.rank.canSelectTeamMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können in ihrem Profil eine Team-Nachrichten-Markierung wählen.]]></item>		
-	</category>		
-	<category name="wcf.acp.option">		
-		<item name="wcf.acp.option.module_user_mark_team_message"><![CDATA[Markierung von Teamnachrichten]]></item>
-		<item name="wcf.acp.option.module_user_mark_team_message.description"><![CDATA[Aktiviert die Markierung von Teamnachrichten.]]></item>		
+		<item name="wcf.acp.message.marking.permissions"><![CDATA[Berechtigungen]]></item>
+		<item name="wcf.acp.message.marking.groupIDs"><![CDATA[Benutzergruppenzuordnung]]></item>
+		<item name="wcf.acp.message.marking.groupIDs.description"><![CDATA[Wähle hier Benutzergruppen aus, denen diese Markierung zur Verfügung stehen soll. Falls Du keine Gruppe auswählst, wird automatisch die Gruppe &raquo;Jeder&laquo; ausgewählt.]]></item>
+		<item name="wcf.acp.message.marking.delete"><![CDATA[Nachrichtenmarkierung löschen]]></item>
+		<item name="wcf.acp.message.marking.delete.description"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich gelöscht.]]></item>
 	</category>
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking"><![CDATA[Kann Nachrichten-Markierung wählen]]></item>
+		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können in ihrem Profil eine Standard-Nachrichten-Markierung wählen.]]></item>
+	</category>
+	<category name="wcf.acp.option">		
+		<item name="wcf.acp.option.module_display_message_markings"><![CDATA[Nachrichtenmarkierung]]></item>
+		<item name="wcf.acp.option.module_display_message_markings.description"><![CDATA[Aktiviert die Nachrichtenmarkierung.]]></item>		
+	</category>	
 	<category name="wcf.acp.user">		
-		<item name="wcf.acp.user.assignTeamMessageMarking"><![CDATA[Teamnachrichtenmarkierung von Benutzern setzen]]></item>
-		<item name="wcf.acp.user.assignTeamMessageMarking.markTeamMessageGroupID"><![CDATA[Gruppe für Teamnachrichtenmarkierung]]></item>
-		<item name="wcf.acp.user.assignTeamMessageMarking.markTeamMessageGroupID.description"><![CDATA[Die Markierung der hier ausgewählten Gruppe wird bei den gewählten Benutzern gesetzt.]]></item>		
+		<item name="wcf.acp.user.assignMessageMarking"><![CDATA[Nachrichtenmarkierung von Benutzern setzen]]></item>
+		<item name="wcf.acp.user.assignMessageMarking.markingID"><![CDATA[Nachrichtenmarkierungen]]></item>
+		<item name="wcf.acp.user.assignMessageMarking.markingID.description"><![CDATA[Die hier ausgewählte Markierung wird bei den Benutzern gesetzt, auf die die oben gewählten Bedingungen zutreffen <strong>und</strong> denen diese Markierung zur Verfügung steht.]]></item>		
 	</category>
 	<category name="wcf.message">				
-		<item name="wcf.message.settings.markAsTeamMessage"><![CDATA[Als Teamnachricht markieren]]></item>
-		<item name="wcf.message.settings.markAsTeamMessage.description"><![CDATA[Markiert diese Nachricht als Teambeitrag mit der von Dir festgelegten Teammarkierung.]]></item>		
+		<item name="wcf.message.marking.markingID"><![CDATA[Markierung]]></item>
+		<item name="wcf.message.marking.markingID.none"><![CDATA[Keine Markierung]]></item>
+		<item name="wcf.message.marking.example"><![CDATA[Beispielmarkierung]]></item>
+		<item name="wcf.message.marking.markingID.description"><![CDATA[Wähle eine Markierung für diese Nachricht aus.]]></item>		
 	</category>
 	<category name="wcf.user.option">
-		<item name="wcf.user.option.markTeamMessageGroupID"><![CDATA[Markierung von Teamnachrichten]]></item>
-		<item name="wcf.user.option.markTeamMessageGroupID.description"><![CDATA[Bitte wähle die gewünschte Markierung Deiner als Teammitglied markierten Nachrichten.]]></item>
+		<item name="wcf.user.option.defaultMessageMarkingID"><![CDATA[Nachrichtenmarkierung]]></item>		
+		<item name="wcf.user.option.defaultMessageMarkingID.description"><![CDATA[Bitte wähle die gewünschte Standard-Markierung für die von Dir erstellten Nachrichten.]]></item>
+		<item name="wcf.user.option.defaultMessageMarkingID.none"><![CDATA[Keine Markierung]]></item>
 	</category>
 </language>

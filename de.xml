@@ -13,7 +13,7 @@
 		<item name="wcf.acp.message.marking.title"><![CDATA[Titel]]></item>
 		<item name="wcf.acp.message.marking.title.description"><![CDATA[Bitte geben Sie einen Titel für diese Nachrichtenmarkierung an.]]></item>
 		<item name="wcf.acp.message.marking.add"><![CDATA[Nachrichtenmarkierung hinzufügen]]></item>
-		<item name="wcf.acp.message.marking.add.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich hinzufügefügt.]]></item>
+		<item name="wcf.acp.message.marking.add.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich hinzugefügt.]]></item>
 		<item name="wcf.acp.message.marking.edit"><![CDATA[Nachrichtenmarkierung bearbeiten]]></item>
 		<item name="wcf.acp.message.marking.edit.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich bearbeitet.]]></item>
 		<item name="wcf.acp.message.marking.general"><![CDATA[Allgemein]]></item>
@@ -23,7 +23,7 @@
 }</pre>]]></item>
 		<item name="wcf.acp.message.marking.permissions"><![CDATA[Berechtigungen]]></item>
 		<item name="wcf.acp.message.marking.groupIDs"><![CDATA[Benutzergruppenzuordnung]]></item>
-		<item name="wcf.acp.message.marking.groupIDs.description"><![CDATA[Wählen Sie hier Benutzergruppen aus, denen diese Markierung zur Verfügung stehen soll. Falls Sie keine Gruppe auswählen, wird automatisch die Gruppe &raquo;Jeder"&laquo; ausgewählt.]]></item>
+		<item name="wcf.acp.message.marking.groupIDs.description"><![CDATA[Wählen Sie hier Benutzergruppen aus, denen diese Markierung zur Verfügung stehen soll. Falls Sie keine Gruppe auswählen, wird automatisch die Gruppe &raquo;Jeder&laquo; ausgewählt.]]></item>
 		<item name="wcf.acp.message.marking.delete"><![CDATA[Nachrichtenmarkierung löschen]]></item>
 		<item name="wcf.acp.message.marking.delete.description"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich gelöscht.]]></item>
 	</category>

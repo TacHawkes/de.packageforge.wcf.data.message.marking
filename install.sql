@@ -18,3 +18,6 @@ CREATE TABLE wcf1_message_marking_to_group (
   groupID int(10) NOT NULL,
   PRIMARY KEY (markingID,groupID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO wcf1_message_marking_to_group (markingID, groupID) VALUES
+(1, 4);
