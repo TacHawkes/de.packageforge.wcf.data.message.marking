@@ -43,6 +43,7 @@
 	<category name="wcf.message">				
 		<item name="wcf.message.marking.markingID"><![CDATA[Markierung]]></item>
 		<item name="wcf.message.marking.markingID.none"><![CDATA[Keine Markierung]]></item>
+		<item name="wcf.message.marking.example"><![CDATA[Beispielmarkierung]]></item>
 		<item name="wcf.message.marking.markingID.description"><![CDATA[Wählen Sie eine Markierung für diese Nachricht aus.]]></item>		
 	</category>
 	<category name="wcf.user.option">

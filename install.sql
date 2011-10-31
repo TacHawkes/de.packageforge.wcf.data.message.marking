@@ -9,6 +9,9 @@ CREATE TABLE wcf1_message_marking (
   PRIMARY KEY (markingID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+INSERT INTO wcf1_message_marking (markingID, title, css, disabled) VALUES
+(1, 'wcf.message.marking.example', '.messageContent {\r\n   border-left: solid blue 10px;\r\n   background-color: blue;\r\n}', 0);
+
 DROP TABLE IF EXISTS wcf1_message_marking_to_group;
 CREATE TABLE wcf1_message_marking_to_group (
   markingID int(10) NOT NULL,
