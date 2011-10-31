@@ -36,9 +36,9 @@
 		<item name="wcf.acp.option.module_display_message_markings.description"><![CDATA[Aktiviert die Nachrichtenmarkierung.]]></item>		
 	</category>	
 	<category name="wcf.acp.user">		
-		<item name="wcf.acp.user.assignMessageMarking"><![CDATA[Nachrichtenmarkierung von Benutzern setzen]]></item>
-		<item name="wcf.acp.user.assignMessageMarking.markingID"><![CDATA[Nachrichtenmarkierungen]]></item>
-		<item name="wcf.acp.user.assignMessageMarking.markingID.description"><![CDATA[Die hier ausgewählte Markierung wird bei den Benutzern gesetzt, auf die die oben gewählten Bedingungen zutreffen <strong>und</strong> denen diese Markierung zur Verfügung steht.]]></item>		
+		<item name="wcf.acp.user.assignDefaultMessageMarking"><![CDATA[Nachrichtenmarkierung von Benutzern setzen]]></item>
+		<item name="wcf.acp.user.assignDefaultMessageMarking.markingID"><![CDATA[Nachrichtenmarkierungen]]></item>
+		<item name="wcf.acp.user.assignDefaultMessageMarking.markingID.description"><![CDATA[Die hier ausgewählte Markierung wird bei den Benutzern gesetzt, auf die die oben gewählten Bedingungen zutreffen <strong>und</strong> denen diese Markierung zur Verfügung steht.]]></item>		
 	</category>
 	<category name="wcf.message">				
 		<item name="wcf.message.marking.markingID"><![CDATA[Markierung]]></item>

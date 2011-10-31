@@ -36,9 +36,9 @@
 		<item name="wcf.acp.option.module_display_message_markings.description"><![CDATA[Activates the message marking.]]></item>		
 	</category>	
 	<category name="wcf.acp.user">		
-		<item name="wcf.acp.user.assignMessageMarking"><![CDATA[Set user's default message marking]]></item>
-		<item name="wcf.acp.user.assignMessageMarking.markingID"><![CDATA[Message marking]]></item>
-		<item name="wcf.acp.user.assignMessageMarking.markingID.description"><![CDATA[The selected marking will be set for all users if the conditions chosen above apply <strong>and</strong> this markin is available for them.]]></item>		
+		<item name="wcf.acp.user.assignDefaultMessageMarking"><![CDATA[Set user's default message marking]]></item>
+		<item name="wcf.acp.user.assignDefaultMessageMarking.markingID"><![CDATA[Message marking]]></item>
+		<item name="wcf.acp.user.assignDefaultMessageMarking.markingID.description"><![CDATA[The selected marking will be set for all users if the conditions chosen above apply <strong>and</strong> this markin is available for them.]]></item>		
 	</category>
 	<category name="wcf.message">				
 		<item name="wcf.message.marking.markingID"><![CDATA[Marking]]></item>
