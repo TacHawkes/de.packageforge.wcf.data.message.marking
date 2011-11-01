@@ -22,14 +22,14 @@
 </div>
 <form method="post" action="index.php?form=MessageMarking{@$action|ucfirst}">
 	<div class="border content">
-		<div class="container-1">
+		<div class="container-1">		
 			<fieldset>
 				<legend>{lang}wcf.acp.message.marking.general{/lang}</legend>
 
 				<div class="formElement{if $errorField == 'title'} formError{/if}" id="titleDiv">
 					<div class="formFieldLabel">
 						<label for="title">{lang}wcf.acp.message.marking.title{/lang}</label>
-					</div>
+					</div>								
 					<div class="formField">
 						<input type="text" class="inputText" name="title" id="title" value="{$title}" />
 						{if $errorField == 'title'}
@@ -39,48 +39,52 @@
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="titleHelpMessage">
-						{lang}wcf.acp.message.marking.title.description{/lang}
+						<p>{lang}wcf.acp.message.marking.title.description{/lang}</p>
 					</div>
 				</div>
-				<script type="text/javascript">//<![CDATA[
+				
+				<script type="text/javascript">
+				//<![CDATA[
 					inlineHelp.register('title');
-				//]]></script>
+				//]]>
+				</script>
 
 				<div class="formElement" id="cssDiv">
 					<div class="formFieldLabel">
 						<label for="css">{lang}wcf.acp.message.marking.css{/lang}</label>
-					</div>
-					<div class="formField">
-						<textarea id="css" name="css" rows="5">{$css}</textarea>						
+					</div>										
+					<div class="formField">						
+						<textarea id="css" name="css" rows="5" cols="60">{$css}</textarea>						
 					</div>
 					<div class="formFieldDesc hidden" id="cssHelpMessage">
-						{lang}wcf.acp.message.marking.css.description{/lang}
+						<p>{lang}wcf.acp.message.marking.css.description{/lang}</p>
 					</div>
 				</div>
-				<script type="text/javascript">//<![CDATA[
+				<script type="text/javascript">
+				//<![CDATA[
 					inlineHelp.register('css');
-				//]]></script>
-
+				//]]>
+				</script>
 			</fieldset>
 
 			<fieldset>
 				<legend>{lang}wcf.acp.message.marking.permissions{/lang}</legend>
 					<div class="formElement">
 						<div class="formFieldLabel">
-							<label for="groupIDs">{lang}wcf.acp.message.marking.groupIDs{/lang}</label>
+							<label>{lang}wcf.acp.message.marking.groupIDs{/lang}</label>
 						</div>
 						<div class="formField">
 							{htmlcheckboxes options=$groupSelect selected=$groupIDs name=groupIDs}
 						</div>
 						<div class="formFieldDesc hidden" id="groupIDsHelpMessage">
-							{lang}wcf.acp.message.marking.groupIDs.description{/lang}
+							<p>{lang}wcf.acp.message.marking.groupIDs.description{/lang}</p>
 						</div>
 					</div>
-					<script type="text/javascript">//<![CDATA[
+					<script type="text/javascript">
+					//<![CDATA[
 						inlineHelp.register('groupIDs');
-					//]]></script>
-				</legend>
-
+					//]]>
+					</script>
 			</fieldset>
 
 			{if $additionalFields|isset}{@$additionalFields}{/if}
