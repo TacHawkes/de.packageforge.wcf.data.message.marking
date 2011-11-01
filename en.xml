@@ -30,6 +30,14 @@
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking"><![CDATA[Can select message marking.]]></item>
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking.description"><![CDATA[Members of this user group can select a default message marking in their profile.]]></item>
+		<item name="wcf.acp.group.option.category.admin.messageMarking"><![CDATA[Message markings]]></item>
+		<item name="wcf.acp.group.option.category.admin.messageMarking.description"><![CDATA[]]></item>                		
+		<item name="wcf.acp.group.option.admin.messageMarking.canAddMessageMarking"><![CDATA[Can add message markings]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canAddMessageMarking.description"><![CDATA[Members of this group can add new message markings.]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canEditMessageMarking"><![CDATA[Can edit message markings.]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canEditMessageMarking.description"><![CDATA[Members of this group can edit message markings.]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canDeleteMessageMarking"><![CDATA[Can delete message markings]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canDeleteMessageMarking.description"><![CDATA[Members of this group can delete message markings.]]></item>
 	</category>
 	<category name="wcf.acp.option">		
 		<item name="wcf.acp.option.module_display_message_markings"><![CDATA[Message marking]]></item>

@@ -30,6 +30,14 @@
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking"><![CDATA[Kann Nachrichten-Markierung wählen]]></item>
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können in ihrem Profil eine Standard-Nachrichten-Markierung wählen.]]></item>
+		<item name="wcf.acp.group.option.category.admin.messageMarking"><![CDATA[Nachrichtenmarkierungen]]></item>
+		<item name="wcf.acp.group.option.category.admin.messageMarking.description"><![CDATA[]]></item>                		
+		<item name="wcf.acp.group.option.admin.messageMarking.canAddMessageMarking"><![CDATA[Kann neue Nachrichtenmarkierungen erstellen]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canAddMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können neue Nachrichtenmarkierungen erstellen.]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canEditMessageMarking"><![CDATA[Kann Nachrichtenmarkierungen bearbeiten]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canEditMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können vorhandene Nachrichtenmarkierungen bearbeiten.]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canDeleteMessageMarking"><![CDATA[Kann Nachrichtenmarkierungen löschen]]></item>
+		<item name="wcf.acp.group.option.admin.messageMarking.canDeleteMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können vorhandene Nachrichtenmarkierungen löschen.]]></item>
 	</category>
 	<category name="wcf.acp.option">		
 		<item name="wcf.acp.option.module_display_message_markings"><![CDATA[Nachrichtenmarkierung]]></item>
