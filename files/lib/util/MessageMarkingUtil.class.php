@@ -1,6 +1,6 @@
 <?php
 /**
- * Team markings utility
+ * Message markings utility
  *
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
@@ -9,7 +9,7 @@
  * @subpackage  util
  * @category    Community Framework
  */
-class TeamMarkingsUtil {
+class MessageMarkingUtil {
 	/**
 	 * Regular expression for splitting the css into selector and content parts	 
 	 */

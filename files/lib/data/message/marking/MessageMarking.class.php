@@ -56,7 +56,7 @@ class MessageMarking extends DatabaseObject {
 	public function getCSSOutput($targetSelectors = array()) {
 		if (!count($targetSelectors)) return $this->css;
 
-		return TeamMarkingsUtil::parseCSS($this->css, $targetSelectors);
+		return MessageMarkingUtil::parseCSS($this->css, $targetSelectors);
 	}
 
 	/**
