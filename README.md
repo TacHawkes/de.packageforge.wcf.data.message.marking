@@ -1,7 +1,7 @@
-Mark Team Members 1.0
+Message Marking 1.0
 ===============================
 
-This package appends the wcf and the wcf profile package with functionality for marking team messages. 
+This package appends the wcf and the wcf profile package with functionality for marking messages. 
 It is a package only. It does nothing with an additional plugin which uses the functionality provided 
 by this package.
 

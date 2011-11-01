@@ -18,7 +18,7 @@
 	//]]>
 </script>
 
-<select name="defaultMarkingID" id="defaultMarkingID">
+<select name="defaultMessageMarkingID" id="defaultMessageMarkingID">
 	<option value="0"{if $defaultMessageMarkingID == 0} selected="selected"{/if}>{lang}wcf.user.option.defaultMessageMarkingID.none{/lang}</option>
 	{foreach from=$markings item=marking}
 		<option value="{@$marking->markingID}"
@@ -28,7 +28,7 @@
 
 <script type="text/javascript">
 	//<![CDATA[
-		$('defaultMarkingID').observe('change', function() {
+		$('defaultMessageMarkingID').observe('change', function() {
 			showMessageMarkingPreview(this.getValue());
 		});
 	//]]>

@@ -121,4 +121,3 @@ class MessageMarkingEditor extends MessageMarking {
 		WCF::getDB()->sendQuery($sql);
 	}
 }
-?>

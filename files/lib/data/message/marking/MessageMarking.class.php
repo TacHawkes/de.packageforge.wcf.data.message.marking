@@ -119,4 +119,3 @@ class MessageMarking extends DatabaseObject {
 		return self::$markingsToGroups[$h];
 	}
 }
-?>

@@ -51,4 +51,3 @@ abstract class AbstractMessageMarkingAction extends AbstractAction {
 		WCF::getCache()->clear(WCF_DIR.'cache/', 'cache.messageMarkings.php');
 	}
 }
-?>

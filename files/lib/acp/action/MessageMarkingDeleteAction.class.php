@@ -33,4 +33,3 @@ class MessageMarkingDeleteAction extends AbstractMessageMarkingAction {
 		exit;
 	}
 }
-?>

@@ -83,4 +83,3 @@ class MessageMarkingEditForm extends MessageMarkingAddForm {
 		));
 	}
 }
-?>

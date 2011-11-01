@@ -19,7 +19,7 @@
 	</requiredpackages>
 
 	<excludepackages>
-		<excludepackage>de.packageforge.wcf.message.marking</excludepackage>
+		<excludepackage>de.packageforge.wcf.markteam</excludepackage>
 		<excludepackage>de.webLonia.wcf.markteam</excludepackage>
 	</excludepackages>
 

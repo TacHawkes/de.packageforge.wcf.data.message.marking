@@ -112,4 +112,3 @@ class MessageMarkingAddForm extends ACPForm {
 		));
 	}
 }
-?>

@@ -36,4 +36,3 @@ class CacheBuilderMessageMarkings implements CacheBuilder {
 		return $data;
 	}
 }
-?>

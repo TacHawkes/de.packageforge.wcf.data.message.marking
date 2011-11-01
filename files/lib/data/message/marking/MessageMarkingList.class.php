@@ -73,4 +73,3 @@ class MessageMarkingList extends DatabaseObjectList {
 		return $this->markings;
 	}
 }
-?>

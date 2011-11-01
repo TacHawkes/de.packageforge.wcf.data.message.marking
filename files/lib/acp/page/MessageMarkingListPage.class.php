@@ -99,4 +99,3 @@ class MessageMarkingListPage extends SortablePage {
 		parent::show();
 	}
 }
-?>

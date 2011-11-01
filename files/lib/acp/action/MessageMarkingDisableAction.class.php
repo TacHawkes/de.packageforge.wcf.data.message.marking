@@ -33,4 +33,3 @@ class MessageMarkingDisableAction extends AbstractMessageMarkingAction {
 		exit;
 	}
 }
-?>

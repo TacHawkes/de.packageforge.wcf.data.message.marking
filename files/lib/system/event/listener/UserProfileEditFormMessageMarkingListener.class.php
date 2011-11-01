@@ -60,7 +60,7 @@ class UserProfileEditFormMessageMarkingListener implements EventListener {
 						
 					$fields = array();
 						
-					// get team message markings
+					// get message markings
 					if (WCF::getUser()->getPermission('user.profile.rank.canSelectMessageMarking')) {
 						$availableMarkings = MessageMarking::getAvailableMarkings();		
 
