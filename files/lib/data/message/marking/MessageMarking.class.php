@@ -93,8 +93,8 @@ class MessageMarking extends DatabaseObject {
 	 * @param	$addDefaultGroups	boolean
 	 * @return 	array<MessageMarking>
 	 */
-	public static function getAvailableMarkings($groupIDs = array(), $addDefaultGroups = true) {
-		if (!count($groupIDs)) {
+	public static function getAvailableMarkings($groupIDs = null, $addDefaultGroups = true) {
+		if ($groupIDs === null) {
 			$groupIDs = WCF::getUser()->getGroupIDs();
 		}
 		

@@ -59,7 +59,8 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 					// if id != 0 check if id is available for each user
 					if ($this->markingID != 0) {
 						foreach ($users as $key => $user) {
-							if (!count(MessageMarking::getAvailableMarkings(explode(',', $user['groupIDs'])))) {
+							$m = MessageMarking::getAvailableMarkings(explode(',', $user['groupIDs']));
+							if (!isset($m[$this->markingID])) {
 								unset($users[$key]);	
 							}
 						}

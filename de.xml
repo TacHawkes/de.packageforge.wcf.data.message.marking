@@ -16,6 +16,8 @@
 		<item name="wcf.acp.message.marking.add.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich hinzugefügt.]]></item>
 		<item name="wcf.acp.message.marking.edit"><![CDATA[Nachrichtenmarkierung bearbeiten]]></item>
 		<item name="wcf.acp.message.marking.edit.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich bearbeitet.]]></item>
+		<item name="wcf.acp.message.marking.delete"><![CDATA[Nachrichtenmarkierung löschen]]></item>
+		<item name="wcf.acp.message.marking.delete.success"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich gelöscht.]]></item>
 		<item name="wcf.acp.message.marking.general"><![CDATA[Allgemein]]></item>
 		<item name="wcf.acp.message.marking.css"><![CDATA[CSS-Code]]></item>
 		<item name="wcf.acp.message.marking.css.description"><![CDATA[Geben Sie hier CSS-Deklarationen ein, die auf Nachrichten mit dieser Markierung angewendet werden sollen. Das folgende Beispiel führt zu einem orangenem Balken am linken Rand der Nachricht: <pre>.messageContent {

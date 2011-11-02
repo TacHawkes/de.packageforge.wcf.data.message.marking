@@ -16,6 +16,8 @@
 		<item name="wcf.acp.message.marking.add.success"><![CDATA[The message marking has been saved successfully.]]></item>
 		<item name="wcf.acp.message.marking.edit"><![CDATA[Edit message marking]]></item>
 		<item name="wcf.acp.message.marking.edit.success"><![CDATA[The message marking has been edited successfully.]]></item>
+		<item name="wcf.acp.message.marking.delete"><![CDATA[Delete message marking]]></item>
+		<item name="wcf.acp.message.marking.delete.success"><![CDATA[The message marking has been successfully deleted.]]></item>
 		<item name="wcf.acp.message.marking.general"><![CDATA[General]]></item>
 		<item name="wcf.acp.message.marking.css"><![CDATA[CSS-Code]]></item>
 		<item name="wcf.acp.message.marking.css.description"><![CDATA[Enter css declarations which will be applied to messages using this marking. The effect of the following examples is an orange bar to the left of the message content: <pre>.messageContent {
