@@ -4,8 +4,8 @@
 		<packagename>Message Markings</packagename>
 		<packagedescription></packagedescription>
 		<isunique>1</isunique>
-		<version>1.0.0 beta 2</version>
-		<date>2011-11-01</date>
+		<version>1.0.0 beta 4</version>
+		<date>2011-11-02</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -36,6 +36,26 @@
 		<eventlistener>eventlistener.xml</eventlistener>
 		<options>options.xml</options>
 		<groupoptions>groupoptions.xml</groupoptions>		
+		
+		<!-- language -->
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+		<languages languagecode="en">en.xml</languages>
+	</instructions>
+	
+	<instructions type="update" fromversion="1.0.0 beta 3">
+		<!-- files -->		
+		<files>files.tar</files>
+		
+		<!-- language -->
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+		<languages languagecode="en">en.xml</languages>
+	</instructions>
+	
+	<instructions type="update" fromversion="1.0.0 beta 2">
+		<!-- files -->		
+		<files>files.tar</files>
 		
 		<!-- language -->
 		<languages languagecode="de">de.xml</languages>

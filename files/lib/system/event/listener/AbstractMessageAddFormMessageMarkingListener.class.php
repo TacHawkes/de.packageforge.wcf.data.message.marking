@@ -28,15 +28,15 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 							'availableMarkings' => $availableMarkings,
 							'markingID' => $this->getMarkingID($eventObj, $className)
 						));
-						WCF::getTPL()->append('additionalInformationFields', WCF::getTPL()->fetch('messageMarkingSetting'));
-						break;
+						WCF::getTPL()->append('additionalInformationFields', WCF::getTPL()->fetch('messageMarkingSetting'));						
 					}
+					break;
 				case 'saved' :
 					if (isset($_POST['markingID'])) $markingID = intval($_POST['markingID']);
 					else {
 						$markingID = WCF::getUser()->defaultMessageMarkingID;
 					}					
-					if (isset($availableMarkings[$markingID])) {
+					if ($markingID == 0 || isset($availableMarkings[$markingID])) {
 						$this->saveMessageObjectSetting($eventObj, $className, $markingID);
 					}
 					break;

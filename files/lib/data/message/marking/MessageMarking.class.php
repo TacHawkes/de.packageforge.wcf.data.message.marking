@@ -102,6 +102,9 @@ class MessageMarking extends DatabaseObject {
 		if ($addDefaultGroups) {
 			$groupIDs = array_unique(array_merge(Group::getGroupIdsByType(array(GROUP::EVERYONE, GROUP::USERS)), $groupIDs));
 		}
+		
+		// empty array, nothing to do
+		if (!count($groupIDs)) return array();
 
 		$h = StringUtil::getHash(implode(',', $groupIDs));
 		if (!isset(self::$markingsToGroups[$h])) {

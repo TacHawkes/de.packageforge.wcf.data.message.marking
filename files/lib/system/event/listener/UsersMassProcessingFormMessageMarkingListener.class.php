@@ -59,7 +59,7 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 					// if id != 0 check if id is available for each user
 					if ($this->markingID != 0) {
 						foreach ($users as $key => $user) {
-							if (!count(MessageMarking::getAvailableMarkings($user['groupIDs'], false))) {
+							if (!count(MessageMarking::getAvailableMarkings(explode(',', $user['groupIDs'])))) {
 								unset($users[$key]);	
 							}
 						}
@@ -70,7 +70,7 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 					if (count($userIDArray)) {
 						// save assignment
 						$sql = "UPDATE	wcf".WCF_N."_user
-							SET	markingID = ".$this->markingID."
+							SET	defaultMessageMarkingID = ".$this->markingID."
 							WHERE	userID IN (".implode(',', $userIDArray).")";
 						WCF::getDB()->sendQuery($sql);
 
