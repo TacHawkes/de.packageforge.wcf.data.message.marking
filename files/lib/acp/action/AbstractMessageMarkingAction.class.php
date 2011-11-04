@@ -33,7 +33,8 @@ abstract class AbstractMessageMarkingAction extends AbstractAction {
 	 */
 	public function readParameters() {
 		parent::readParameters();
-
+		
+		// read marking
 		if (isset($_REQUEST['markingID'])) $this->markingID = intval($_REQUEST['markingID']);
 		$this->messageMarking = new MessageMarkingEditor($this->markingID);
 		if (!$this->messageMarking->markingID) {

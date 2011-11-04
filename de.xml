@@ -22,12 +22,11 @@
 		<item name="wcf.acp.message.marking.css"><![CDATA[CSS-Code]]></item>
 		<item name="wcf.acp.message.marking.css.description"><![CDATA[Geben Sie hier CSS-Deklarationen ein, die auf Nachrichten mit dieser Markierung angewendet werden sollen. Das folgende Beispiel führt zu einem orangenem Balken am linken Rand der Nachricht: <pre>.messageContent {
    border-left: solid orange 10px;
-}</pre>]]></item>
+}</pre>]]></item>		
 		<item name="wcf.acp.message.marking.permissions"><![CDATA[Berechtigungen]]></item>
 		<item name="wcf.acp.message.marking.groupIDs"><![CDATA[Benutzergruppenzuordnung]]></item>
 		<item name="wcf.acp.message.marking.groupIDs.description"><![CDATA[Wählen Sie hier Benutzergruppen aus, denen diese Markierung zur Verfügung stehen soll. Falls Sie keine Gruppe auswählen, wird automatisch die Gruppe &raquo;Jeder&laquo; ausgewählt.]]></item>
-		<item name="wcf.acp.message.marking.delete"><![CDATA[Nachrichtenmarkierung löschen]]></item>
-		<item name="wcf.acp.message.marking.delete.description"><![CDATA[Die Nachrichtenmarkierung wurde erfolgreich gelöscht.]]></item>
+		<item name="wcf.acp.message.marking.intro"><![CDATA[Das Anlegen von Nachrichtenmarkierungen erfordert eine genaue Kenntnis von Cascading Stylesheets (CSS). Beispiele für Nachrichtenmarkierungen erhalten Sie hier: <a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.packageforge.de/board4-supportbereich-f%C3%BCr-freie-plugins/board85-allgemeine-fragen/1902-sammlung-von-markierungen/"|rawurlencode}" class="externalURL">Sammlung von Nachrichtenmarkierungen</a>]]></item>		
 	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking"><![CDATA[Kann Nachrichten-Markierung wählen]]></item>

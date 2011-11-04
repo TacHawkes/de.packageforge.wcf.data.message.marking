@@ -15,6 +15,8 @@
 	<p class="success">{lang}wcf.acp.message.marking.{@$action}.success{/lang}</p>
 {/if}
 
+<p class="info">{lang}wcf.acp.message.marking.intro{/lang}</p>
+
 <div class="contentHeader">
 	<div class="largeButtons">
 		<ul><li><a href="index.php?page=MessageMarkingList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/messageMarkingM.png" alt="" title="{lang}wcf.acp.menu.link.messageMarking.view{/lang}" /> <span>{lang}wcf.acp.menu.link.messageMarking.view{/lang}</span></a></li></ul>

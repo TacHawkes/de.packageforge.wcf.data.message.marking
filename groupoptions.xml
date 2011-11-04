@@ -10,7 +10,7 @@
 			<option name="user.profile.rank.canSelectMessageMarking">
 				<categoryname>user.profile.rank</categoryname>
 				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
+				<defaultvalue>1</defaultvalue>
 				<options>module_display_message_markings</options>
 			</option>
 			<option name="admin.display.canAddMessageMarking">

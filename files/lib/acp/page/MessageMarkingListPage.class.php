@@ -81,8 +81,7 @@ class MessageMarkingListPage extends SortablePage {
 		
 		WCF::getTPL()->assign(array(
 			'markings' => $this->markingList->getObjects(),
-			'deletedMarkingID' => $this->deletedMarkingID,
-			'items' => $this->markingList->countObjects()
+			'deletedMarkingID' => $this->deletedMarkingID			
 		));
 	}
 	

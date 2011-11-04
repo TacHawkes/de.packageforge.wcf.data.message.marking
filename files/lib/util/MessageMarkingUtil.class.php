@@ -16,7 +16,7 @@ class MessageMarkingUtil {
 	const CSS_SPLIT_REG_EX = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
 
 	/**
-	 * Parses the group css and inserts the target selectors.
+	 * Parses the css and inserts the target selectors.
 	 *
 	 * @param 	string 		$css
 	 * @param	array<string>	$targetSelectors

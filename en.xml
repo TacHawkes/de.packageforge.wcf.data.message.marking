@@ -26,8 +26,7 @@
 		<item name="wcf.acp.message.marking.permissions"><![CDATA[Permissions]]></item>
 		<item name="wcf.acp.message.marking.groupIDs"><![CDATA[User groups assignment]]></item>
 		<item name="wcf.acp.message.marking.groupIDs.description"><![CDATA[Choose which user groups should be able to use this marking. If no group is chosen, &raquo;Everyone&laquo; is selected by default.]]></item>
-		<item name="wcf.acp.message.marking.delete"><![CDATA[Delete message marking]]></item>
-		<item name="wcf.acp.message.marking.delete.description"><![CDATA[The message marking has been deleted successfully.]]></item>
+		<item name="wcf.acp.message.marking.intro"><![CDATA[Configuring message markings requires distinct knowledge of Cascading Stylesheets (CSS). You can find some examples on the following German Webpage: <a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.packageforge.de/board4-supportbereich-f%C3%BCr-freie-plugins/board85-allgemeine-fragen/1902-sammlung-von-markierungen/"|rawurlencode}" class="externalURL">Collection of message markings</a>.]]></item>		
 	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking"><![CDATA[Can select message marking.]]></item>

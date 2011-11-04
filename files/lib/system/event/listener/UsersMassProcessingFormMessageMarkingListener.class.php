@@ -45,10 +45,11 @@ class UsersMassProcessingFormMessageMarkingListener implements EventListener {
 					// get users
 					$users = array();
 					$sql = "SELECT		user.userID,
-								GROUP_CONCAT(DISTINCT user_to_groups.groupID ORDER BY user_to_groups.groupID ASC SEPARATOR ',') AS groupIDs					
+								GROUP_CONCAT(DISTINCT groups.groupID ORDER BY groups.groupID ASC SEPARATOR ',') AS groupIDs					
 						FROM		wcf".WCF_N."_user user
-						LEFT JOIN	wcf".WCF_N."_user_to_groups user_to_groups
-						ON		(user_to_groups.userID = user.userID)
+						LEFT JOIN	wcf".WCF_N."_user_option_value option_value USING (userID)
+						LEFT JOIN	wcf".WCF_N."_user_to_groups groups
+						ON		(groups.userID = user.userID)
 						".$eventObj->conditions->get()."
 						GROUP BY	user.userID";
 					$result = WCF::getDB()->sendQuery($sql);
