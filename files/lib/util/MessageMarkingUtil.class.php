@@ -11,7 +11,14 @@
  */
 class MessageMarkingUtil {
 	/**
-	 * Regular expression for splitting the css into selector and content parts	 
+	 * ActiveStyle object
+	 *
+	 * @var ActiveStyle
+	 */
+	protected static $style = null;
+
+	/**
+	 * Regular expression for splitting the css into selector and content parts
 	 */
 	const CSS_SPLIT_REG_EX = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
 
@@ -34,7 +41,7 @@ class MessageMarkingUtil {
 				// get new selector
 				$newSelector = self::appendSelector($selector, $targetSelectors);
 				// insert content
-				$newSelector .= ' { '.$content.' }';
+				$newSelector .= ' { '.self::parseStyleVariables($content).' }';
 				// insert new lines
 				$newSelector .= "\n\n";
 
@@ -71,5 +78,41 @@ class MessageMarkingUtil {
 		}
 
 		return $newSelector;
+	}
+
+	/**
+	 * Parses style variables in content css
+	 *
+	 * @param string $content
+	 */
+	protected static function parseStyleVariables($content) {
+		self::$style = StyleManager::getStyle();
+
+		$content = preg_replace_callback('/\$([a-z0-9_\-\.]+)\$/', array('self', 'parseStyleVariablesCallback'), $content);
+
+		return $content;
+	}
+
+	/**
+	 * Callback for parser
+	 *
+	 * @param array $match
+	 */
+	protected static function parseStyleVariablesCallback($match) {
+		if (self::$style->getVariable($match[1])) {
+			$value = self::$style->getVariable($match[1]);
+			// fix images location
+			if ($match[1] == 'global.images.location' && !FileUtil::isURL($value) && substr($value, 0, 1) != '/') {
+				$value = '../'.$value;
+			}
+			// fix icons location
+			if ($match[1] == 'global.icons.location' && !FileUtil::isURL($value) && substr($value, 0, 1) != '/') {
+				$value = '../'.$value;
+			}
+			return $value;
+		}
+		else {
+			return $match[0];
+		}
 	}
 }
