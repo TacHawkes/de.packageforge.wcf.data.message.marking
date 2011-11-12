@@ -58,6 +58,16 @@ class MessageMarking extends DatabaseObject {
 
 		return MessageMarkingUtil::parseCSS($this->css, $targetSelectors);
 	}
+	
+	/**
+	 * Returns a MessageMarkingEditor object for this MessageMarking object.
+	 * 
+	 * @return	MessageMarkingEditor
+	 */
+	public function getEditor() {
+		require_once(WCF_DIR.'lib/data/message/marking/MessageMarkingEditor.class.php');
+		return new MessageMarkingEditor(null, $this->data);
+	}
 
 	/**
 	 * Returns the cached markings
@@ -120,5 +130,5 @@ class MessageMarking extends DatabaseObject {
 		}
 
 		return self::$markingsToGroups[$h];
-	}
+	}	
 }
