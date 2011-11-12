@@ -5,7 +5,7 @@ require_once(WCF_DIR.'lib/data/user/UserSession.class.php');
 
 /**
  * Automatically assigns user's default markings depending on group settings
- * 
+ *
  * @author      Oliver Kliebisch
  * @copyright   2011 Oliver Kliebisch
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -18,13 +18,14 @@ class MessageMarkingAutoAssignCronjob implements Cronjob {
 	 * @see Cronjob::execute()
 	 */
 	public function execute($data) {
-		$sql = "SELECT	*
-			FROM	wcf".WCF_N."_group
-			WHERE	messageMarkingID <> 0";
+		$sql = "SELECT		*
+			FROM		wcf".WCF_N."_group
+			WHERE		messageMarkingID <> 0
+			ORDER BY	messageMarkingPriority DESC";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
-			$userIDArray = array();			
-			$sql = "SELECT		userID, 
+			$userIDArray = array();
+			$sql = "SELECT		userID,
 						GROUP_CONCAT(DISTINCT groups.groupID ORDER BY groups.groupID ASC SEPARATOR ',') AS groupIDs
 				FROM		wcf".WCF_N."_user user
 				LEFT JOIN 	wcf".WCF_N."_user_to_groups groups 
@@ -44,7 +45,7 @@ class MessageMarkingAutoAssignCronjob implements Cronjob {
 					$userIDArray[] = $row2['userID'];
 				}
 			}
-						
+
 			if (count($userIDArray)) {
 				$userIDArray = array_unique($userIDArray);
 
@@ -53,11 +54,10 @@ class MessageMarkingAutoAssignCronjob implements Cronjob {
 					SET		defaultMessageMarkingID = ".$row['messageMarkingID']."
 					WHERE		userID IN (".implode(',', $userIDArray).")";
 				WCF::getDB()->sendQuery($sql);
-				
+
 				// reset sesions
 				Session::resetSessions($userIDArray);
 			}
 		}
 	}
 }
-?>
