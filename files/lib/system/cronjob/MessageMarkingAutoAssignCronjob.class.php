@@ -39,7 +39,7 @@ class MessageMarkingAutoAssignCronjob implements Cronjob {
 				GROUP BY	user.userID";
 			$result2 = WCF::getDB()->sendQuery($sql);
 			while ($row2 = WCF::getDB()->fetchArray($result2)) {
-				$user = new UserSession(null, $row);
+				$user = new UserSession(null, $row2);
 				// only alter users who cannot change their default message marking
 				if (!$user->getPermission('user.profile.rank.canSelectMessageMarking')) {
 					$userIDArray[] = $row2['userID'];

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/cronjobs.xsd">
+	<import>
+		<cronjob>
+			<classPath>lib/system/cronjob/MessageMarkingAutoAssignCronjob.class.php</classPath>
+			<description>Message Marking Auto-Assignment</description>
+			<startMinute>*/30</startMinute>
+			<startHour>*</startHour>
+			<startDom>*</startDom>
+			<startMonth>*</startMonth>
+			<startDow>*</startDow>
+			<execMultiple>0</execMultiple>
+			<canbeedited>1</canbeedited>
+			<canbedisabled>1</canbedisabled>
+			<active>1</active>
+		</cronjob>
+	</import>
+        <delete>
+		<cronjob name="lib/system/cronjob/RefreshRenommeeCronjob.class.php">			
+		</cronjob>
+	</delete>
+</data>
