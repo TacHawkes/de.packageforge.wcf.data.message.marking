@@ -20,7 +20,7 @@ class GroupAddFormAutoAssignMessageMarkingListener implements EventListener {
 	 * @var integer
 	 */
 	protected $markingID = 0;
-	
+
 	/**
 	 * marking priority
 	 *
@@ -52,19 +52,27 @@ class GroupAddFormAutoAssignMessageMarkingListener implements EventListener {
 				if (isset($_POST['markingPriority'])) $this->markingPriority = intval($_POST['markingPriority']);
 			}
 			else if ($eventName == 'validate') {
-				if (!isset($this->availableMarkings[$this->markingID])) $this->markingID = 0;
+				if ($this->markingID > 0) {
+					if (!isset($this->availableMarkings[$this->markingID])) $this->markingID = 0;
 
-				// validate if the group option is disabled, otherwise throw an exception
-				foreach ($eventObj->activeOptions as $option) {
-					if ($option['optionName'] == 'user.profile.rank.canSelectMessageMarking'
-					&& $option['optionValue'] == 1) {
-						throw new UserInputException('markingID', 'optionEnabled');
+					try {
+						// validate if the group option is disabled, otherwise throw an exception
+						if (isset($eventObj->values['user.profile.rank.canSelectMessageMarking'])) {
+							throw new UserInputException('markingID', 'optionEnabled');
+						}
+					}
+					catch (UserInputException $e) {
+						$eventObj->errorType[$e->getField()] = $e->getType();
+					}
+
+					if (count($eventObj->errorType) > 0) {
+						throw new UserInputException('markingID', $eventObj->errorType);
 					}
 				}
-					
 				// save
 				$eventObj->additionalFields['messageMarkingID'] = $this->markingID;
 				$eventObj->additionalFields['messageMarkingPriority'] = $this->markingPriority;
+
 			}
 			else if ($eventName == 'saved') {
 				if ($this->markingID != 0) {
@@ -80,6 +88,16 @@ class GroupAddFormAutoAssignMessageMarkingListener implements EventListener {
 						// clear cache
 						WCF::getCache()->clear(WCF_DIR.'cache/', 'cache.messageMarkings.php');
 					}
+						
+					// execute cronjob
+					require_once(WCF_DIR.'lib/data/cronjobs/CronjobEditor.class.php');
+					$sql = "SELECT		cronjob.*, package.packageDir
+						FROM		wcf".WCF_N."_cronjobs cronjob
+						LEFT JOIN	wcf".WCF_N."_package package
+						ON		(package.packageID = cronjob.packageID)
+						WHERE		cronjob.classPath = 'lib/system/cronjob/MessageMarkingAutoAssignCronjob.class.php'";
+					$cronjob = new CronjobEditor(null, WCF::getDB()->getFirstRow($sql));
+					$cronjob->execute();
 				}
 			}
 			else if ($eventName == 'assignVariables') {
@@ -90,9 +108,11 @@ class GroupAddFormAutoAssignMessageMarkingListener implements EventListener {
 				}
 
 				WCF::getTPL()->assign(array(
-					'availableMarkings' => $this->availableMarkings,
+					'markings' => $this->availableMarkings,
 					'markingID' => $this->markingID,
-					'markingPriority' => $this->markingPriority
+					'markingPriority' => $this->markingPriority,
+					'errorField' => $eventObj->errorField,
+					'errorType' => $eventObj->errorType
 				));
 				WCF::getTPL()->append('additionalFieldSets', WCF::getTPL()->fetch('groupAddFormAutoAssignMessageMarking'));
 			}

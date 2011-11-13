@@ -1,4 +1,6 @@
 ALTER TABLE wcf1_user ADD defaultMessageMarkingID int(10) NOT NULL default 0;
+ALTER TABLE wcf1_group ADD messageMarkingID int(10) NOT NULL default 0;
+ALTER TABLE wcf1_group ADD messageMarkingPriority int(10) NOT NULL default 0;
 
 DROP TABLE IF EXISTS wcf1_message_marking;
 CREATE TABLE wcf1_message_marking (

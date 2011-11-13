@@ -1,7 +1,7 @@
 <?php
 // wcf imports
 require_once(WCF_DIR.'lib/data/cronjobs/Cronjob.class.php');
-require_once(WCF_DIR.'lib/data/user/UserSession.class.php');
+require_once(WCF_DIR.'lib/system/session/UserSession.class.php');
 
 /**
  * Automatically assigns user's default markings depending on group settings
@@ -25,13 +25,13 @@ class MessageMarkingAutoAssignCronjob implements Cronjob {
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$userIDArray = array();
-			$sql = "SELECT		userID,
+			$sql = "SELECT		user.userID,
 						GROUP_CONCAT(DISTINCT groups.groupID ORDER BY groups.groupID ASC SEPARATOR ',') AS groupIDs
 				FROM		wcf".WCF_N."_user user
 				LEFT JOIN 	wcf".WCF_N."_user_to_groups groups 
 				ON 		(groups.userID = user.userID)
-				WHERE		defaultMessageMarkingID <> 0
-				AND 		userID IN (
+				WHERE		user.defaultMessageMarkingID = 0
+				AND 		user.userID IN (
 						SELECT	userID
 						FROM	wcf".WCF_N."_user_to_groups
 						WHERE	groupID = ".$row['groupID']."

@@ -29,7 +29,7 @@
 		<item name="wcf.acp.message.marking.intro"><![CDATA[Configuring message markings requires distinct knowledge of Cascading Stylesheets (CSS). You can find some examples on the following German Webpage: <a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.packageforge.de/board4-supportbereich-f%C3%BCr-freie-plugins/board85-allgemeine-fragen/1902-sammlung-von-markierungen/"|rawurlencode}" class="externalURL">Collection of message markings</a>.]]></item>		
 	</category>
 	<category name="wcf.acp.group">
-		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking"><![CDATA[Can select message marking.]]></item>
+		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking"><![CDATA[Can select message marking]]></item>
 		<item name="wcf.acp.group.option.user.profile.rank.canSelectMessageMarking.description"><![CDATA[Members of this user group can select a default message marking in their profile.]]></item>
 		<item name="wcf.acp.group.option.category.admin.display.messageMarking"><![CDATA[Message markings]]></item>
 		<item name="wcf.acp.group.option.category.admin.display.messageMarking.description"><![CDATA[]]></item>                		
@@ -39,6 +39,13 @@
 		<item name="wcf.acp.group.option.admin.display.canEditMessageMarking.description"><![CDATA[Members of this group can edit message markings.]]></item>
 		<item name="wcf.acp.group.option.admin.display.canDeleteMessageMarking"><![CDATA[Can delete message markings]]></item>
 		<item name="wcf.acp.group.option.admin.display.canDeleteMessageMarking.description"><![CDATA[Members of this group can delete message markings.]]></item>
+		<item name="wcf.acp.group.messageMarking"><![CDATA[Automatic assignment of the default message marking.]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID"><![CDATA[Message marking]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID.none"><![CDATA[No marking]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID.description"><![CDATA[Chose a message marking which will be set as default message marking for all members of this user group.]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID.error.optionEnabled"><![CDATA[The group permission "Can select message marking" must not be activated while using the automatic assigment of default message markings.]]></item>
+		<item name="wcf.acp.group.messageMarking.markingPriority"><![CDATA[Priority]]></item>
+		<item name="wcf.acp.group.messageMarking.markingPriority.description"><![CDATA[If you intend to use the automatic assignment of default message markings for more than one user group, you are strongly encouraged to set a priority which user group's default assignment should be chosen if a user is a member of multiple groups. Valid priorities are integers. A higher priority number wins versus a lower priority number.]]></item>
 	</category>
 	<category name="wcf.acp.option">		
 		<item name="wcf.acp.option.module_display_message_markings"><![CDATA[Message marking]]></item>

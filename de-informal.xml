@@ -39,6 +39,13 @@
 		<item name="wcf.acp.group.option.admin.display.canEditMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können vorhandene Nachrichtenmarkierungen bearbeiten.]]></item>
 		<item name="wcf.acp.group.option.admin.display.canDeleteMessageMarking"><![CDATA[Kann Nachrichtenmarkierungen löschen]]></item>
 		<item name="wcf.acp.group.option.admin.display.canDeleteMessageMarking.description"><![CDATA[Mitglieder dieser Benutzergruppe können vorhandene Nachrichtenmarkierungen löschen.]]></item>
+		<item name="wcf.acp.group.messageMarking"><![CDATA[Automatische Zuordnung der Standard-Nachrichtenmarkierung]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID"><![CDATA[Markierung]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID.none"><![CDATA[Keine Markierung]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID.description"><![CDATA[Die hier ausgewählte Markierung wird bei den Mitgliedern dieser Benutzergruppe als Standard-Markierung ausgewählt.]]></item>
+		<item name="wcf.acp.group.messageMarking.markingID.error.optionEnabled"><![CDATA[Das Gruppenrecht "Kann Nachrichten-Markierung wählen" darf nicht aktiviert sein, während die automatische Zuordnung der Standardmarkierung verwendet wird.]]></item>
+		<item name="wcf.acp.group.messageMarking.markingPriority"><![CDATA[Priorität]]></item>
+		<item name="wcf.acp.group.messageMarking.markingPriority.description"><![CDATA[Falls die automatische Zuordnung der Standard-Nachrichtenmarkierung für mehrere Benutzergruppen verwendet wird, muss <strong>unbedingt</strong> eine Priorität gesetzt werden, um anzugeben welche Standardmarkierung bevorzugt gesetzt werden soll. Andernfalls liefert die automatische Zuordnung unter Umständen ein fehlerhaftes Ergebnis. Gültige Werte können eine beliebige Zahl sein, wobei eine höhere Prioritätszahl gegenüber einer niedrigeren Prioritätszahl gewinnt.]]></item>
 	</category>
 	<category name="wcf.acp.option">		
 		<item name="wcf.acp.option.module_display_message_markings"><![CDATA[Nachrichtenmarkierung]]></item>

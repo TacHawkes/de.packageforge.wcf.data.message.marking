@@ -64,6 +64,34 @@
 			<eventname>assignVariables</eventname>
 			<environment>admin</environment>
 			<listenerclassfile>lib/system/event/listener/UsersMassProcessingFormMessageMarkingListener.class.php</listenerclassfile>
+		</eventlistener>		
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>readFormParameters</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupAddFormAutoAssignMessageMarkingListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>validate</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupAddFormAutoAssignMessageMarkingListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>saved</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupAddFormAutoAssignMessageMarkingListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>assignVariables</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupAddFormAutoAssignMessageMarkingListener.class.php</listenerclassfile>
 		</eventlistener>
 		<!-- /admin -->
 	</import>
