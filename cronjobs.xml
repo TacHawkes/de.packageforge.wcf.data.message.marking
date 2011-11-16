@@ -15,8 +15,4 @@
 			<active>1</active>
 		</cronjob>
 	</import>
-        <delete>
-		<cronjob name="lib/system/cronjob/RefreshRenommeeCronjob.class.php">			
-		</cronjob>
-	</delete>
 </data>
