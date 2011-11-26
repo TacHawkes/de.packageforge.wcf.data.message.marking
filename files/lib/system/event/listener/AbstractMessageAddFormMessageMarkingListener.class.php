@@ -19,7 +19,7 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 	 */
 	public function execute($eventObj, $className, $eventName) {
 		if (MODULE_DISPLAY_MESSAGE_MARKINGS) {
-			$availableMarkings = MessageMarking::getAvailableMarkings();
+			$availableMarkings = MessageMarking::getAvailableMarkings($this->getGroupIDs($eventObj, $className));
 			
 			switch ($eventName) {				
 				case 'assignVariables' :
@@ -62,4 +62,13 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 	 * @return	integer	 
 	 */
 	abstract public function getMarkingID($eventObj, $className);
+	
+	/**
+	 * Returns the group ids for available markings
+	 *
+	 * @param	mixed		$eventObj
+	 * @param	string		$className
+	 * @return	array<integer>
+	 */
+	abstract public function getGroupIDs($eventObj, $className);
 }

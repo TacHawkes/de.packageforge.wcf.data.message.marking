@@ -21,6 +21,19 @@ class MessageMarkingUtil {
 	 * Regular expression for splitting the css into selector and content parts
 	 */
 	const CSS_SPLIT_REG_EX = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
+	
+	/**
+	 * Special selectors which require different handling
+	 * 	 
+	 * @var array<string>
+	 */
+	protected static $specialSelectors = array(
+		'.disabled',
+		'.deleted',
+		'.marked',
+		'.message',
+		'.threadStarterPost'
+	);
 
 	/**
 	 * Parses the css and inserts the target selectors.
@@ -62,7 +75,7 @@ class MessageMarkingUtil {
 	 * @return	string
 	 */
 	protected static function appendSelector($selector, $targetSelectors) {
-		$newSelector = '';
+		$newSelector = '';		
 		if (StringUtil::indexOf($selector, ',') !== false) {
 			$selectors = explode(',', $selector);
 			foreach ($selectors as $selectorValue) {
@@ -71,9 +84,15 @@ class MessageMarkingUtil {
 			}
 		}
 		else {
+			if (in_array(StringUtil::trim($selector), self::$specialSelectors)) {
+				$connector = '';
+			}
+			else {
+				$connector = ' ';	
+			}
 			foreach ($targetSelectors as $targetSelector) {
 				if (!empty($newSelector)) $newSelector .= ', ';
-				$newSelector .= $targetSelector.' '.$selector;
+				$newSelector .= $targetSelector.$connector.$selector;
 			}
 		}
 
