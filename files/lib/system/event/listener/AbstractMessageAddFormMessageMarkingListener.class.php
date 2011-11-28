@@ -21,6 +21,9 @@ abstract class AbstractMessageAddFormMessageMarkingListener implements EventList
 		if (MODULE_DISPLAY_MESSAGE_MARKINGS) {
 			$availableMarkings = MessageMarking::getAvailableMarkings($this->getGroupIDs($eventObj, $className));
 			
+			// handle empty available markings
+			if (!count($availableMarkings)) return;
+						
 			switch ($eventName) {				
 				case 'assignVariables' :
 					if (WCF::getUser()->getPermission('user.profile.rank.canSelectMessageMarking')) {

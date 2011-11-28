@@ -11,16 +11,16 @@
  */
 class MessageMarkingUtil {
 	/**
+	 * Regular expression for splitting the css into selector and content parts
+	 */
+	const CSS_SPLIT_REG_EX = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
+	
+	/**
 	 * ActiveStyle object
 	 *
 	 * @var ActiveStyle
 	 */
 	protected static $style = null;
-
-	/**
-	 * Regular expression for splitting the css into selector and content parts
-	 */
-	const CSS_SPLIT_REG_EX = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
 	
 	/**
 	 * Special selectors which require different handling
@@ -28,10 +28,12 @@ class MessageMarkingUtil {
 	 * @var array<string>
 	 */
 	protected static $specialSelectors = array(
+		// wcf
 		'.disabled',
 		'.deleted',
 		'.marked',
 		'.message',
+		// wbb
 		'.threadStarterPost'
 	);
 

@@ -4,8 +4,8 @@
 		<packagename>Message Markings</packagename>
 		<packagedescription></packagedescription>
 		<isunique>1</isunique>
-		<version>1.0.1</version>
-		<date>2011-11-13</date>
+		<version>1.0.2</version>
+		<date>2011-11-28</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -44,20 +44,9 @@
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="1.0.0">
-		<!-- files -->
-		<acptemplates>acptemplates.tar</acptemplates>			
-		<files>files.tar</files>
-		<sql>update.sql</sql>
-		
-		<!-- config -->
-		<eventlistener>eventlistener.xml</eventlistener>
-		<cronjobs>cronjobs.xml</cronjobs>
-		
-		<!-- language -->
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="de-informal">de-informal.xml</languages>
-		<languages languagecode="en">en.xml</languages>
+	<instructions type="update" fromversion="1.0.1">
+		<!-- files -->				
+		<files>files.tar</files>		
 	</instructions>
 	
 </package>
