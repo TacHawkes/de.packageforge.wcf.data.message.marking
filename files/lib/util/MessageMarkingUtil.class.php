@@ -16,6 +16,11 @@ class MessageMarkingUtil {
 	const CSS_SPLIT_REG_EX = '/((?:(?:[^,{]+),?)*?)\{([^}]*)\}/is';
 	
 	/**
+	 * Regular expression for special css selectors
+	 */
+	const SPECIAL_CSS_SELECTORS_REG_EX = '/^\.(disabled|deleted|marked|message|threadStarterPost)\s+/';
+	
+	/**
 	 * ActiveStyle object
 	 *
 	 * @var ActiveStyle
@@ -23,19 +28,18 @@ class MessageMarkingUtil {
 	protected static $style = null;
 	
 	/**
-	 * Special selectors which require different handling
-	 * 	 
+	 * target selectors
+	 * 
 	 * @var array<string>
 	 */
-	protected static $specialSelectors = array(
-		// wcf
-		'.disabled',
-		'.deleted',
-		'.marked',
-		'.message',
-		// wbb
-		'.threadStarterPost'
-	);
+	protected static $targetSelectors = null;
+	
+	/**
+	 * special selector handled
+	 * 
+	 * @var array<string>
+	 */
+	protected static $specialSelectorHandled = false;
 
 	/**
 	 * Parses the css and inserts the target selectors.
@@ -47,6 +51,7 @@ class MessageMarkingUtil {
 	public static function parseCSS($css, $targetSelectors) {
 		$newCss = '';
 		$css = StringUtil::unifyNewlines($css);
+		self::$targetSelectors = $targetSelectors;
 		// extract selectors and content
 		if (preg_match_all(self::CSS_SPLIT_REG_EX, $css, $matches, PREG_SET_ORDER)) {
 			foreach ($matches as $match) {
@@ -86,15 +91,16 @@ class MessageMarkingUtil {
 			}
 		}
 		else {
-			if (in_array(StringUtil::trim($selector), self::$specialSelectors)) {
-				$connector = '';
-			}
-			else {
-				$connector = ' ';	
-			}
+			// handle special selectors														
+			$replacedSelectors = preg_replace_callback(self::SPECIAL_CSS_SELECTORS_REG_EX, array('self', 'parseSpecialCSSSelectors'), $selector);
+			// skip appending if special selectors have been found		
+			if (self::$specialSelectorHandled) {				
+				self::$specialSelectorHandled = false;
+				return $replacedSelectors;	
+			}		
 			foreach ($targetSelectors as $targetSelector) {
 				if (!empty($newSelector)) $newSelector .= ', ';
-				$newSelector .= $targetSelector.$connector.$selector;
+				$newSelector .= $targetSelector.' '.$selector;
 			}
 		}
 
@@ -136,4 +142,21 @@ class MessageMarkingUtil {
 			return $match[0];
 		}
 	}
+
+	/**
+	 * Callback for special css selectors
+	 *
+	 * @param array $match
+	 */
+	protected static function parseSpecialCSSSelectors($match) {
+		self::$specialSelectorHandled = true;
+		$truncatedOldSelector = StringUtil::replace('.'.$match[1], '', $match[0]); 
+		$newSelector = '';				
+		foreach (self::$targetSelectors as $targetSelector) {
+			if (!empty($newSelector)) $newSelector .= ', ';
+			$newSelector .= $targetSelector.'.'.$match[1].$truncatedOldSelector;
+		}
+		
+		return $newSelector;
+	}	
 }
