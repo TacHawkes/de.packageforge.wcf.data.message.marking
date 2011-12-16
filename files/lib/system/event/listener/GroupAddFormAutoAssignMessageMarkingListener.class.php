@@ -64,10 +64,6 @@ class GroupAddFormAutoAssignMessageMarkingListener implements EventListener {
 					catch (UserInputException $e) {
 						$eventObj->errorType[$e->getField()] = $e->getType();
 					}
-
-					if (count($eventObj->errorType) > 0) {
-						throw new UserInputException('markingID', $eventObj->errorType);
-					}
 				}
 				// save
 				$eventObj->additionalFields['messageMarkingID'] = $this->markingID;

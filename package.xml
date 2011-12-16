@@ -4,8 +4,8 @@
 		<packagename>Message Markings</packagename>
 		<packagedescription></packagedescription>
 		<isunique>1</isunique>
-		<version>1.0.2</version>
-		<date>2011-11-28</date>
+		<version>1.0.2 pl 1</version>
+		<date>2011-12-16</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -44,7 +44,7 @@
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="1.0.1">
+	<instructions type="update" fromversion="1.0.2">
 		<!-- files -->				
 		<files>files.tar</files>		
 	</instructions>
